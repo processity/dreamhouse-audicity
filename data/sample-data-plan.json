@@ -13,5 +13,10 @@
         "sobject": "Contact",
         "resolveRefs": false,
         "files": ["contacts-data.json"]
+    },
+    {
+        "sobject": "Campaign",
+        "resolveRefs": true,
+        "files": ["campaigns-data.json"]
     }
 ]

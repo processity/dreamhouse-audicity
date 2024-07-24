@@ -1,0 +1,136 @@
+{
+    "records": [
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "18HenryStCampaignRef"
+            },
+            "Name": "Stunning Victorian Main Campaign",
+            "ExpectedRevenue": 975000,
+            "Type": "Advertisement",
+            "Property__c": "@18HenryStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "24PearlStCampaignRef"
+            },
+            "Name": "Ultimate Sophistication",
+            "ExpectedRevenue": 1200000,
+            "Type": "Advertisement",
+            "Property__c": "@24PearlStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "72FrancisStCampaignRef"
+            },
+            "Name": "Modern City Living",
+            "ExpectedRevenue": 825000,
+            "Type": "Advertisement",
+            "Property__c": "@72FrancisStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "32PrinceStCampaignRef"
+            },
+            "Name": "Stunning Colonial",
+            "ExpectedRevenue": 930000,
+            "Type": "Advertisement",
+            "Property__c": "@32PrinceStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "110BaxterStCampaignRef"
+            },
+            "Name": "Waterfront in the City",
+            "ExpectedRevenue": 850000,
+            "Type": "Advertisement",
+            "Property__c": "@110BaxterStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "448HanoverStCampaignRef"
+            },
+            "Name": "Quiet Retreat",
+            "ExpectedRevenue": 725000,
+            "Type": "Advertisement",
+            "Property__c": "@448HanoverStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "127EndicottStCampaignRef"
+            },
+            "Name": "City Living",
+            "ExpectedRevenue": 450000,
+            "Type": "Advertisement",
+            "Property__c": "@127EndicottStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "48BrattleStCampaignRef"
+            },
+            "Name": "Heart of Harvard Square",
+            "ExpectedRevenue": 450000,
+            "Type": "Advertisement",
+            "Property__c": "@48BrattleStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "121HarborwalkCampaignRef"
+            },
+            "Name": "Seaport District Retreat",
+            "ExpectedRevenue": 450000,
+            "Type": "Advertisement",
+            "Property__c": "@121HarborwalkRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "640HarrisonAveCampaignRef"
+            },
+            "Name": "Contemporary City Living",
+            "ExpectedRevenue": 650000,
+            "Type": "Advertisement",
+            "Property__c": "@640HarrisonAveRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "95GloucesterStCampaignRef"
+            },
+            "Name": "Architectural Details",
+            "ExpectedRevenue": 690000,
+            "Type": "Advertisement",
+            "Property__c": "@95GloucesterStRef",
+            "StartDate": "2024-31-12"
+        },
+        {
+            "attributes": {
+                "type": "Campaign",
+                "referenceId": "145CommonwealthAveCampaignRef"
+            },
+            "Name": "Contemporary Luxury",
+            "ExpectedRevenue": 845000,
+            "Type": "Advertisement",
+            "Property__c": "@145CommonwealthAveRef",
+            "StartDate": "2024-31-12"
+        }
+    ]
+}
