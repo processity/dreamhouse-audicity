@@ -5,8 +5,19 @@
 -->
 
 ![dreamhouse-logo](dreamhouse-logo.png)
-
 This is a fork of the Dreamhouse [sample application](https://github.com/trailheadapps/dreamhouse-lwc) created by Salesforce developer relations team. This fork has been customized for the purpose of of installing and running the Audicity data tracking and field data history app.
+
+Audicity and this project run in the Salesforce platform. In order to run it, and work with Audicity, you need a working Salesforce environment (also known as an "org" if you're new to working with Salesforce). Some steps below make use of Salesforce's expansive resources to get up and running with an environment. We are not Salesforce and cannot control Salesforce's enablement resources. If they change, and no longer work, please file an [issue](https://github.com/processity/dreamhouse-audicity/issues) in this repo and let us know. We'll work as quickly as we can to provide an alternative resource.
+
+## Table of contents
+
+-   [Installing Dreamhouse Using a Scratch Org](#installing-dreamhouse-using-a-scratch-org): This is the recommended installation option. Use this option if you are a developer who wants to experience the app and the code.
+
+-   [Installing Dreamhouse using a Developer Edition Org](#installing-dreamhouse-using-a-developer-edition-org): Useful when you want the app deployed to a more permanent environment than a Scratch org. There is no reason to run this in a Trailhead Playground, but this install option would also work for such an org.
+
+-   [Note on Sample Data Import](#note-on-sample-data-import)
+
+-   [Optional installation instructions](#optional-installation-instructions)
 
 ## Table of contents
 
@@ -60,16 +71,6 @@ This is a fork of the Dreamhouse [sample application](https://github.com/trailhe
     sf org assign permset -n dreamhouse
     ```
 
-<!--
-1. (Optional) Assign the `Walkthroughs` permission set to the default user.
-
-    > Note: this will enable your user to use In-App Guidance Walkthroughs, allowing you to be taken through a guided tour of the sample app. The Walkthroughs permission set gets auto-created with In-App guidance activation.
-
-    ```
-    sf org assign permset -n Walkthroughs
-    ```
--->
-
 1. Import sample data:
 
     ```
@@ -81,8 +82,6 @@ This is a fork of the Dreamhouse [sample application](https://github.com/trailhe
     ```
     sf org open
     ```
-
-1. In **Setup**, under **Themes and Branding**, activate the **Lightning Lite** theme.
 
 1. In App Launcher, select the **Dreamhouse** app.
 
@@ -115,10 +114,10 @@ Make sure to start from a brand-new environment to avoid conflicts with previous
 1. In App Launcher, select the **Dreamhouse** app.
 -->
 
-## Installing Dreamhouse using a Developer Edition Org or a Trailhead Playground
+## Installing Dreamhouse using a Developer Edition Org
 
 Follow this set of instructions if you want to deploy the app to a more permanent environment than a Scratch org.
-This includes non source-tracked orgs such as a [free Developer Edition Org](https://developer.salesforce.com/signup) or a [Trailhead Playground](https://trailhead.salesforce.com/).
+This includes non source-tracked orgs such as a [free Developer Edition Org](https://developer.salesforce.com/signup) or a [Trailhead Playground](https://trailhead.salesforce.com/). While there is no reason to use a Trailhead Playground, it is an option, if you insist on giving it a try.
 
 Make sure to start from a brand-new environment to avoid conflicts with previous work you may have done.
 
@@ -129,10 +128,10 @@ Make sure to start from a brand-new environment to avoid conflicts with previous
     cd dreamhouse-audicity
     ```
 
-1. Authorize your Trailhead Playground or Developer org and provide it with an alias (**mydevorg** in the command below):
+1. Authorize your Trailhead Playground or Developer org and provide it with an alias (**dreamhouse-audicity-devorg** in the command below). Note this command launches a browser window and you must successfully login to the org to complete the process. If you do not complete the login successfully, the subsequent commands will not function:
 
     ```
-    sf org login web -s -a mydevorg
+    sf org login web -s -a dreamhouse-audicity-devorg
     ```
 
 1. Run this command in a terminal to deploy the app.
@@ -156,18 +155,20 @@ Make sure to start from a brand-new environment to avoid conflicts with previous
 1. If your org isn't already open, open it now:
 
     ```
-    sf org open -o mydevorg
+    sf org open -o dreamhouse-audicity-devorg
     ```
 
 1. In App Launcher, select the **Dreamhouse** app.
 
 ## Note on Sample Data Import
 
-Properties inserted using the Salesforce CLI will appear as listed on TODAY() - 10 days. If you want to have this value randomized, perform the data import from the app Settings tab instead.
+Properties inserted using the Salesforce CLI will appear as listed on TODAY() - 10 days.
 
 ## Optional Installation Instructions
 
 This repository contains several files that are relevant if you want to integrate modern web development tooling to your Salesforce development processes, or to your continuous integration/continuous deployment processes.
+
+**While interesting, none of these are necessary in order to run Audicity. These are kept in place here solely to honor the intent of the original creators of the Dreamhouse app.**
 
 ### Code formatting
 
@@ -217,3 +218,16 @@ The app GeocodingService uses OpenStreetMap API to geocode property addresses. O
 -   (maybe test again here)
 -   instrument the `jobId` in the trigger handler and `execute()` method of each Queueable
 -   test an update action again
+
+<!--
+Some notes in case I want to revert.
+
+I removed the following setup instruction. It seems extraneous to me. But if something comes up, I can remember I removed it here:
+1. In **Setup**, under **Themes and Branding**, activate the **Lightning Lite** theme.
+
+Removed reference to the sample data import tab. Will put that back in once I've fixed that:
+> If you want to have this value randomized, perform the data import from the app Settings tab instead.
+
+> Currently the importing data feature in the app will not add campaign records.
+
+-->
