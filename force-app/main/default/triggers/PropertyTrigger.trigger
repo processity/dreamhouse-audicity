@@ -8,9 +8,11 @@ trigger PropertyTrigger on Property__c(
     after undelete
 ) {
 
+    // ***** Add your Audicity instrumentation code on the line immediately following this comment *****   
     if (Trigger.isBefore){
         mantra.AudicityApex.track();
     }
+    // ***** Add your Audicity instrumentation code on the line immediately before this comment *****
     
     PropertyTriggerHandler.handleTrigger(
         Trigger.new,
@@ -19,7 +21,10 @@ trigger PropertyTrigger on Property__c(
         Trigger.operationType
         );
         
+    // ***** Add your Audicity instrumentation code on the line immediately following this comment *****
     if (Trigger.isAfter){
         mantra.AudicityApex.track();
     }
+    // ***** Add your Audicity instrumentation code on the line immediately before this comment *****
+        
 }
