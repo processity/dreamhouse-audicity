@@ -6,6 +6,10 @@ public with sharing class PropertyCampaignPriceUpdateQueueable implements Queuea
     }
 
     public void execute(QueueableContext context) {
+        // ***** Add your Audicity instrumentation code on the line immediately following this comment *****
+        mantra.AudicityAsync.track(context);
+        // ***** Add your Audicity instrumentation code on the line immediately before this comment *****
+
         Map<Id, Property__c> propMap = new Map<Id, Property__c>(properties);
 
         List<Campaign> campaigns = [

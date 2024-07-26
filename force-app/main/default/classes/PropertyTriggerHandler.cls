@@ -79,6 +79,9 @@ public with sharing class PropertyTriggerHandler {
                 propsUpdateStatus
             );
             Id jobId = System.enqueueJob(asyncStatus);
+            // ***** Add your Audicity instrumentation code on the line immediately following this comment *****
+            mantra.AudicityAsync.track(jobId);
+            // ***** Add your Audicity instrumentation code on the line immediately before this comment *****
         }
 
         if (propsUpdatePrice?.size() > 0) {
@@ -86,6 +89,9 @@ public with sharing class PropertyTriggerHandler {
                 propsUpdatePrice
             );
             Id jobId = System.enqueueJob(asyncPrice);
+            // ***** Add your Audicity instrumentation code on the line immediately following this comment *****
+            mantra.AudicityAsync.track(jobId);
+            // ***** Add your Audicity instrumentation code on the line immediately before this comment *****
         }
     }
 }
