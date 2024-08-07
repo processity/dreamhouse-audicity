@@ -13,16 +13,6 @@ Audicity and this project run in the Salesforce platform. In order to run it, an
 
 -   [Installing Dreamhouse Using a Scratch Org](#installing-dreamhouse-using-a-scratch-org): This is the recommended installation option. Use this option if you are a developer who wants to experience the app and the code.
 
--   [Installing Dreamhouse using a Developer Edition Org](#installing-dreamhouse-using-a-developer-edition-org): Useful when you want the app deployed to a more permanent environment than a Scratch org. There is no reason to run this in a Trailhead Playground, but this install option would also work for such an org.
-
--   [Note on Sample Data Import](#note-on-sample-data-import)
-
--   [Optional installation instructions](#optional-installation-instructions)
-
-## Table of contents
-
--   [Installing Dreamhouse Using a Scratch Org](#installing-dreamhouse-using-a-scratch-org): This is the recommended installation option. Use this option if you are a developer who wants to experience the app and the code.
-
 -   [Installing Dreamhouse using a Developer Edition Org or a Trailhead Playground](#installing-dreamhouse-using-a-developer-edition-org-or-a-trailhead-playground): Useful when tackling Trailhead Badges or if you want the app deployed to a more permanent environment than a Scratch org.
 
 -   [Note on Sample Data Import](#note-on-sample-data-import)
