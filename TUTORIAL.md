@@ -58,7 +58,7 @@ The Salesforce CLI is the command line tool for interacting with Salesforce envi
 
 Visual Studio Code (or VS Code) is Microsoft’s free and open source code editor, which is Salesforce’s supported code editor for developing on the Salesforce platform. While other IDEs exist for working with the Salesforce platform, this tutorial relies on VS Code.
 
-> _**Note:** Salesforce Code Builder uses a hosted version of VS Code. While there is no reason this tutorial shouldn't work with Code Builder, it hasn't been tested with it. Additional steps may be required if you want to attempt this with Code Builder._
+> _**NOTE:** Salesforce Code Builder uses a hosted version of VS Code. While there is no reason this tutorial shouldn't work with Code Builder, it hasn't been tested with it. Additional steps may be required if you want to attempt this with Code Builder._
 
 ### Salesforce Extension Pack for VS Code
 
@@ -187,7 +187,7 @@ You can install the Audicity package into your project org by going to the termi
 
 It could take a couple of minutes for the install to complete. While you wait, you can read the [next section](#audicitywhy-even) which goes into more depth about Audicity’s two key benefits: field history tracking and transaction tracing.
 
-> _**Note**: Audicity can also be installed directly from the AppExchange [listing](<[https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828](https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828)>). Audicity offers a free trial, but installation from AppExchange requires having a user with the `Manage Billing` user permission._
+> _**NOTE**: Audicity can also be installed directly from the AppExchange [listing](<[https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828](https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828)>). Audicity offers a free trial, but installation from AppExchange requires having a user with the `Manage Billing` user permission._
 
 ### Audicity–Why Even?
 
@@ -223,7 +223,7 @@ Audicity is installed with a number of permission sets which are grouped into th
 
 The Audicity [user guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit?usp=sharing) clearly outlines the permissions associated with each of these and when to use them. To complete this tutorial, you’ll need the _Audicity Tracking Administrator_ and _Audicity Trace Writer_ permission set groups.
 
-> _**Note:** To ensure you do not accidentally expose sensitive data to the wrong users, we recommend a fully reading and understanding these three Audicity permission set groups before moving Audicity into any org where users might access real customer data, including production or full and partial copy sandboxes._
+> _**NOTE:** To ensure you do not accidentally expose sensitive data to the wrong users, we recommend a fully reading and understanding these three Audicity permission set groups before moving Audicity into any org where users might access real customer data, including production or full and partial copy sandboxes._
 
 ### Assign Permission Set Groups
 
@@ -278,7 +278,7 @@ Time to turn on Audicity via the global configuration.
 
 Audicity is now enabled. Next you'll setup tracking on the first object.
 
-> _**Note**: No changes are committed to the Audicity configuration unless explicitly saved. Be certain to commit any changes by clicking **Save** before leaving the Audicity Configuration tab._
+> _**NOTE**: No changes are committed to the Audicity configuration unless explicitly saved. Be certain to commit any changes by clicking **Save** before leaving the Audicity Configuration tab._
 
 ### Enable the First Traced Object
 
@@ -470,7 +470,7 @@ trigger CampaignTrigger on Campaign(
 21. **Save**.
 22. Right-click in the body of your trigger code and select **SFDX: Deploy This Source to Org**.
 
-    > _**Note**: Why is there one `track()` call in this trigger, while there were two in the previous example?_
+    > _**NOTE**: Why is there one `track()` call in this trigger, while there were two in the previous example?_
     >
     > _Audicity expects an instrumentation call as close to the start of the transaction as possible. Likewise, another is expected to be as close to the end of the transaction as possible. In a trigger with no other logic, a single invocation ensures that on any operation (insert, update, etc.) there will be a `track()` call in each phase (before, after) of the transaction. When there is other logic invoked by a trigger, the `track()` call must be placed on either side of the start and end points of the execution of other logic. You can find more details on this in the Audicity User [Guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit#heading=h.iw54etup6gvm)._
 
@@ -482,7 +482,7 @@ As a general rule in Apex development, it’s important to not overload a single
 
 Instrumenting asynchronous Apex is done in two places. First, when you invoke your asynchronous Apex and then, within the asynchronous Apex class itself.
 
-> _**Note**: As of the publishing of this tutorial, the only asynchronous Apex that is supported is `Queueable`. Other types are on the roadmap._
+> _**NOTE**: As of the publishing of this tutorial, the only asynchronous Apex that is supported is `Queueable`. Other types are on the roadmap._
 
 1. Once again return to the project in VS Code.
 2. Go to the `PropertyCampaignPriceUpdateQueueable.cls` Apex class.

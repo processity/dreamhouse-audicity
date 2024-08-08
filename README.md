@@ -1,11 +1,11 @@
-# Dreamhouse Lightning Web Components Sample Application
+# Audicity Tutorial Dreamhouse Sample App
 
 <!--
 [![CI Workflow](https://github.com/trailheadapps/dreamhouse-lwc/workflows/CI/badge.svg)](https://github.com/trailheadapps/dreamhouse-lwc/actions?query=workflow%3ACI) [![Packaging Workflow](https://github.com/trailheadapps/dreamhouse-lwc/workflows/Packaging/badge.svg)](https://github.com/trailheadapps/dreamhouse-lwc/actions?query=workflow%3APackaging) [![codecov](https://codecov.io/gh/trailheadapps/dreamhouse-lwc/branch/main/graph/badge.svg)](https://codecov.io/gh/trailheadapps/dreamhouse-lwc)
 -->
 
 ![dreamhouse-logo](dreamhouse-logo.png)
-This is a fork of the Dreamhouse [sample application](https://github.com/trailheadapps/dreamhouse-lwc) created by Salesforce developer relations team. This fork has been customized for the purpose of of installing and running the Audicity data tracking and field data history app.
+This is a fork of the Dreamhouse [sample application](https://github.com/trailheadapps/dreamhouse-lwc) created by Salesforce developer relations team. This fork has been customized for the purpose of the Audicity setup and configuration [tutorial](https://github.com/processity/dreamhouse-audicity/blob/main/TUTORIAL.md) where you can practice installing and running the Audicity data and transaction tracking app.
 
 Audicity and this project run in the Salesforce platform. In order to run it, and work with Audicity, you need a working Salesforce environment (also known as an "org" if you're new to working with Salesforce). Some steps below make use of Salesforce's expansive resources to get up and running with an environment. We are not Salesforce and cannot control Salesforce's enablement resources. If they change, and no longer work, please file an [issue](https://github.com/processity/dreamhouse-audicity/issues) in this repo and let us know. We'll work as quickly as we can to provide an alternative resource.
 
@@ -156,9 +156,9 @@ Properties inserted using the Salesforce CLI will appear as listed on TODAY() - 
 
 ## Optional Installation Instructions
 
-This repository contains several files that are relevant if you want to integrate modern web development tooling to your Salesforce development processes, or to your continuous integration/continuous deployment processes.
+**None of these are necessary in order to run Audicity. These are kept in place here solely to honor the intent of the original creators of the Dreamhouse app.**
 
-**While interesting, none of these are necessary in order to run Audicity. These are kept in place here solely to honor the intent of the original creators of the Dreamhouse app.**
+This repository contains several files that are relevant if you want to integrate modern web development tooling to your Salesforce development processes, or to your continuous integration/continuous deployment processes.
 
 ### Code formatting
 
