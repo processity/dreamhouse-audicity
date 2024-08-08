@@ -4,30 +4,32 @@ _Tutorial (Duration 60 minutes)_
 
 ## Overview
 
-Audicity is a native Salesforce app that uses the principles of observability to
+Audicity is a native Salesforce app that uses the principles of observability to:
 
 -   Record field data changes for as many objects and fields as needed.
 -   Create end-to-end records of transactions (Audicity Span Events) that describe any actions that take place, or are invoked asynchronously by the transaction context.
 
-Salesforce already can track field data changes with straight forward configurations using either Field History or Field Audit Trail. But each of these comes with limits on the number of tracked fields. Field History limits history storage to two years. With Audicity, no such limits apply. The section [Audicity–Why Even?](section-link) goes into more detail about this later. But for now let’s get started with getting Audicity working.
+Salesforce already can track field data changes with straightforward configurations using either Field History or Field Audit Trail. But each of these comes with limits on the number of tracked fields. And Field History limits history storage to two years. With Audicity, no such limits apply. There is more that can be said about this and the section [Audicity–Why Even?](audicitywhy-even) goes into more detail about this later. But for now let’s get started with getting Audicity working.
 
-In this tutorial, you will install, configure, and setup code instrumentation using the free Audicity trial. Once complete, you will have
+In this tutorial, you will install, configure, and instrumentation code using Audicity's free trial. Once complete, you will have:
 
--   Installed Audicity
--   Configured global settings for the org
--   Configured tracking for two objects
--   Captured and viewed a simple transaction
--   Captured and viewed a complex transaction, including asynchronous Apex execution
+-   Installed Audicity.
+-   Configured global settings for the org.
+-   Configured tracking for two objects.
+-   Captured and viewed a simple transaction.
+-   Captured and viewed a complex transaction, including asynchronous Apex execution.
 
 ### Steps
 
 -   [Getting Setup](#getting-setup)
 -   [Quick Tour of Key Dreamhouse Features](#quick-tour-of-key-dreamhouse-features)
--   [Installing Audicity and Setting Up Your First Trace](#setting-up-audicity-and-setting-up-your-first-trace)
--   [Optional Reading on Audicity Architecture](#optional-reading-on-audicity-architecture)
+-   [Installing Audicity and Setting Up Your First Trace](#installing-audicity-and-setting-up-your-first-trace)
+<!-- -   [Optional Reading on Audicity Architecture](#optional-reading-on-audicity-architecture) -->
 -   [Expanding the Audicity Tracking Footprint](#expanding-the-audicity-tracking-footprint)
 
 ## Getting Setup
+
+### Dependencies
 
 This tutorial has dependencies on the following:
 
@@ -39,23 +41,34 @@ This tutorial has dependencies on the following:
 
 Read on for a short description of each of these followed by guidance on where to find installation instructions for each. But if you are already familiar with developing on the Salesforce platform then feel free to [jump ahead](#installation-and-setup) into getting your org and the Dreamhouse sample application setup.
 
+### Prerequisites
+
+A Salesforce developer, or a very experience Salesforce administrator should be able to complete this tutorial. The skills that this tutorial expects are:
+
+-   Git
+-   Visual Studio Code
+-   Apex
+-   The Salesforce CLI
+
 ### Salesforce CLI
 
-The Salesforce CLI is the command line tool for interacting with Salesforce environments, also known as orgs. You will use this to deploy the Dreamhouse app functionality to your org.
+The Salesforce CLI is the command line tool for interacting with Salesforce environments, also known as orgs. You will use this to deploy the Dreamhouse and Audicity apps to your org.
 
 ### Visual Studio Code
 
 Visual Studio Code (or VS Code) is Microsoft’s free and open source code editor, which is Salesforce’s supported code editor for developing on the Salesforce platform. While other IDEs exist for working with the Salesforce platform, this tutorial relies on VS Code.
 
+> _**Note:** Salesforce Code Builder uses a hosted version of VS Code. While there is no reason this tutorial shouldn't work with Code Builder, it hasn't been tested with it. Additional steps may be required if you want to attempt this with Code Builder._
+
 ### Salesforce Extension Pack for VS Code
 
 The Salesforce Extension Pack connects VS Code to your Salesforce orgs. The extension pack includes commands available through the command palette and context menus. There are also features like the org browser, test running and Einstein for Developers.
 
-**\*NOTE:** Audacity requires some code be added to your org. This identifies when a transaction is starting and stopping. It also ensures asynchronous code can be attributed to an originating transaction.\*
+> _**NOTE:** Audacity requires some code be added to your org. This identifies when a transaction is starting and stopping. It also ensures asynchronous code can be attributed to an originating transaction._
 
 ### A Salesforce Org
 
-While Audicity can be run in any org, the Dreamhouse app is designed to be a learning tool and not for production use. For the purposes of this tutorial we recommend only using either a developer edition Salesforce org, or a scratch org. If you’re unfamiliar with either of these, using a developer edition org is the faster and easier way to get started.
+While this tutorial could work in any org, the Dreamhouse app is designed to be a learning tool and not for production use. For the purposes of this tutorial we recommend only using either a developer edition Salesforce org or a scratch org. If you’re unfamiliar with either of these, using a developer edition org is the faster and easier way to get started.
 
 ### The Dreamhouse Sample Application
 
@@ -65,11 +78,12 @@ Dreamhouse is a sample application originated by the Salesforce developer relati
 
 1. The **Salesforce CLI** can be installed from the Salesforce Developers [website](https://developer.salesforce.com/tools/salesforcecli).
 2. Instructions for **VS Code** and the **Salesforce Extension Pack** are found in the Extension Pack Developer [Guide](https://developer.salesforce.com/tools/vscode/en/vscode-desktop/install).
-3. To create your **org** and install **Audicity** follow the steps in the dreamhouse-audicity [repo](https://github.com/processity/dreamhouse-audicity).
+3. To create your **org** and install **`dreamhouse-audicity`** follow the steps in the `dreamhouse-audicity` [repo](https://github.com/processity/dreamhouse-audicity).
 
+<!--
 ### Important Steps for Scratch Orgs
 
-**\*Note:** Make sure to take note of the username of your Salesforce admin user. If you’re using a scratch org, you’ll need to generate a password to ease with the installation of the Audicity AppExchange package. An easy way to do both of these is using the Salesforce CLI from the dreamhouse-audicity directory.\*
+> _**Note:** Make sure to take note of the username of your Salesforce admin user. If you’re using a scratch org, you’ll need to generate a password to ease with the installation of the Audicity AppExchange package. An easy way to do both of these is using the Salesforce CLI from the dreamhouse-audicity directory._
 
 _To generate a password_
 
@@ -82,18 +96,19 @@ _To view org details including username and password_
 ```bash
 > sf org display
 ```
+-->
 
 ## Quick Tour of Key Dreamhouse Features
 
 ### Dreamhouse and New Features
 
-Dreamhouse has a number of custom features that were designed to show developers how to build features on the Salesforce platform. These consist of the Property object to track houses for sale and the Broker object, which represent the members of the Sales team. In the dreamhouse-audicity app, we’ve added a number of new features. These include:
+Dreamhouse has a number of custom features that were designed to show developers how to build features on the Salesforce platform. These consist of the Property object to track houses for sale and the Broker object, which represent the members of the Sales team. In the `dreamhouse-audicity` app, we’ve added some new features to illustrate Audicity's data history and tracing capabilities. These include:
 
--   A relationship field in the Campaign object so that the property marketing team can run campaigns around properties that are being sold
+-   A relationship field to the Property custom object in the Campaign object so that the property marketing team can run campaigns around properties that are being sold.
 -   A trigger on the Property record called `PropertyTrigger` which ensures every property record has a main campaign for its promotions.
 -   An Apex class called `PropertyTriggerHandler` which encapsulates much of the logic used by the Apex Trigger.
--   Two Queueable Apex classes that are used only when updates happen.
--   Updates to page layouts, permission sets, and other necessary metadata so your Salesforce user can use and access these features.
+-   Two `Queueable` Apex classes that are used only when updates happen.
+-   Modifications to page layouts, permission sets, and other necessary metadata so your Salesforce user can use and access these features.
 
 Let’s see these in action.
 
@@ -101,19 +116,18 @@ Let’s see these in action.
 
 Let’s get started. If you just setup the org you created for this tutorial, you may already be logged in. In which case, go to your org.
 
-If not, you’ll need to login to your org again.
+If not, you’ll need to login to your org again. You can do this using the Salesforce CLI command `sf org open` from your project directory. If you have a developer edition org, you can also go to [https://login.salesforce.com](https://login.salesforce.com) and use your username and password.
 
-One option is to go to [https://login.salesforce.com](https://login.salesforce.com) (or [https://test.salesforce.com](https://test.salesforce.com) for a scratch org) and use the username and password you used for your org. It’s a good time to refresh your memory of these, as you’ll need these to install the AppExchange package.
-
-You can also use the Salesforce CLI command `sf org open` to open your org at this point.
-
-![][image1]
+[this needs an image]
 
 This will take you to your org. Typically you’ll find yourself in the setup menu. Although you might be in another location.
 
 Let’s go find and try out the Dreamhouse app.
 
 1. Click the App Launcher waffle icon.
+
+[add image]
+
 2. Click **View All**.
 3. Select **Dreamhouse**.
 4. Click the **Properties** tab.
@@ -132,11 +146,11 @@ You’ll now see a list of property records. Let’s create a new one.
 
 Along with the property record, a campaign was automatically created with a trigger. Let’s go find it.
 
-1. On the Property page, select the **Related** tab.
+1. On the property page, select the **Related** tab.
 2. In the **Campaigns** related list, note the campaign record that was created. Click the campaign.
 3. On the Campaign page, select the **Details** tab.
 
-Note the new campaign record is derived from certain property fields. These include the name, which is derived from the property name, and the _Expected Revenue in Campaign_ field, which reflects the property’s asking price. The trigger also keeps things in sync as the property changes. Let’s go see:
+The new campaign record is derived from the property data. This includes the name, which is derived from the property name, and the **Expected Revenue in Campaign** field, which reflects the property’s asking price. The trigger also keeps things in sync as the property changes. Let’s go see:
 
 1. Looking at the campaign record go to the **Property** field and click on the value _Mid-Century Modern_.
 2. Once back on the property page, change the following values
@@ -147,7 +161,7 @@ Note the new campaign record is derived from certain property fields. These incl
 5. Select the campaign record _Mid-Century Modern Main Campaign 2024-7_.
 6. Click the **Details** tab.
 
-Note the campaign record has been kept in sync with the changes in the property record.
+The campaign record has been kept in sync with the changes in the property record.
 
 ### Reviewing the Dreamhouse Audicity App Functionality
 
@@ -171,9 +185,9 @@ You can install the Audicity package into your project org by going to the termi
 > sf package install --package Audicity --wait 5
 ```
 
-It could take a couple of minutes for the install to complete. While you wait, you can read the next section which goes into more depth about Audicity’s two key benefits: field history tracking and transaction tracing.
+It could take a couple of minutes for the install to complete. While you wait, you can read the [next section](#audicitywhy-even) which goes into more depth about Audicity’s two key benefits: field history tracking and transaction tracing.
 
-**Note**: Audicity can also be installed directly from the AppExchange [listing](<[https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828](https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828)>). Audicity offers a free trial, but installation from AppExchange requires having a user with the `Manage Billing` user permission.
+> _**Note**: Audicity can also be installed directly from the AppExchange [listing](<[https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828](https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828)>). Audicity offers a free trial, but installation from AppExchange requires having a user with the `Manage Billing` user permission._
 
 ### Audicity–Why Even?
 
@@ -183,7 +197,7 @@ If you’re experienced with Salesforce you may be asking yourself, “why can�
 
 If your requirements are to track history for a limited number of fields, either of these features is a very good option.
 
-Field History allows tracking for up to 20 fields, and the data is accessible for a maximum of two years. Field Audit History pushes the field limit to 100, and you get to keep your data forever (or at least as long as you pay for the Shield license). But what if strict compliance standards mean you should be tracking more than 100 fields? For such situations, a tool that can track as many fields as can be implemented in an object can completely remove such compliance headaches.
+Field History allows tracking for up to 20 fields, and the data is accessible for a maximum of two years. Field Audit History pushes the field limit to 100, and you get to keep your data forever (or at least as long as you pay for the Shield license). But what if strict compliance standards require you to track more than 100 fields? For such situations, a tool that can track as many fields as can be implemented in an object can completely remove such compliance headaches.
 
 #### Understanding Transactions
 
@@ -191,9 +205,9 @@ And what about trying to get to the bottom of transaction problems, such as slow
 
 An Apex logging is user specific, has to be turned on and only stays active for a limited time. This can help in many instances. But intermittent or unpredictable failures can be difficult to diagnose under these circumstances. And even if you get your timing right, failures may not be obvious to find in large log files which can sometimes be truncated if too long.
 
-The data that Audicity captures about all the work that is triggered by a transaction is called a _trace_. Once you’ve setup tracing, any relevant transactions are traced, all the time. This makes it much more likely to capture data about a failure that happens intermittently.
+The data that Audicity captures about all the work that is triggered by a transaction is called a _trace_. Once you’ve setup tracing, _all relevant_ transactions are traced. This makes it much more likely to capture data about a failure that happens intermittently.
 
-To be clear: Audicity doesn’t trace all transactions. That might potentially be a lot\! Only the objects you’ve enabled will trigger tracing. So there’s still no guarantee that you’ll capture that intermittent failure the first time. Especially if it takes place in the context of a non-traced object. But if you can pin down the failure to a particular object, you can then add tracing and you’ll be prepared for the next time a failure occurs.
+To be clear: Audicity doesn’t trace all transactions. That might potentially be a lot\! Only the objects you’ve enabled will are traced. So there’s still no guarantee that you’ll capture that intermittent failure the first time when it takes place in the context of a non-traced object. But if you can pin down the failure to a particular object, you can then add tracing and you’ll be prepared for the next time a failure occurs.
 
 ### Configuring Access To Audicity
 
@@ -207,9 +221,9 @@ Audicity is installed with a number of permission sets which are grouped into th
 | Audicity Trace Viewer           | AudicityLoggingViewer        |
 | Audicity Trace Writer           | AudicityLogWriter            |
 
-The Audicity [user guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit?usp=sharing) clearly outlines the permissions associated with each of these and when to use them. To complete this tutorial, you’ll need the Audicity Tracking Administrator and Audicity Trace Writer permission set group.
+The Audicity [user guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit?usp=sharing) clearly outlines the permissions associated with each of these and when to use them. To complete this tutorial, you’ll need the _Audicity Tracking Administrator_ and _Audicity Trace Writer_ permission set groups.
 
-> _**Note:** To ensure you do not accidentally expose sensitive data to the wrong users, we recommend a full reading and understanding of these three Audicity permission set groups before moving Audicity into any org where users might access actual customer data, including production or full and partial copy sandboxes._
+> _**Note:** To ensure you do not accidentally expose sensitive data to the wrong users, we recommend a fully reading and understanding these three Audicity permission set groups before moving Audicity into any org where users might access real customer data, including production or full and partial copy sandboxes._
 
 ### Assign Permission Set Groups
 
@@ -229,7 +243,7 @@ Run the following command from the project in your terminal, or follow the UI in
 6. Click **Edit Assignments**.
 7. Move _Audicity Tracking Administrator_ and _Audicity Trace Writer_ to the **Enabled Permission Set Groups** box.
 8. Click **Save**.
-9. Verify _Audicity Tracking Administrator_ and _Audicity Trace Writer_ now shows in the **Permission Set Group Assignments** related list.
+9. Verify _Audicity Tracking Administrator_ and _Audicity Trace Writer_ now show in the **Permission Set Group Assignments** related list.
 
 Congratulations\! You’ve successfully installed and given yourself access to Audicity. Time to get tracking\!
 
@@ -238,17 +252,17 @@ Congratulations\! You’ve successfully installed and given yourself access to A
 For Audicity to begin to track changes in your org, there are a few steps which need to be completed.
 
 -   Schedule Audicity Action Scheduler job.
--   Turn on Audicity
+-   Turn on Audicity.
 -   For each object you track:
-    -   Enabling tracking for objects
-    -   Specifying tracked fields
-    -   Adding the Audit Trail UI component to record pages
-    -   Instrumenting Apex code for traced objects
--   Other tasks
-    -   Instrumenting Flow
-    -   Instrumenting Asynchronous Apex
+    -   Enabling tracking for objects.
+    -   Specifying tracked fields.
+    -   Adding the Audit Trail UI component to record pages.
+    -   Instrumenting Apex code for traced objects.
+-   Other required tasks are:
+    -   Instrumenting Flow.
+    -   Instrumenting Asynchronous Apex.
 
-Let’s get Audicity turned on via Audicity’s global configuration.
+Time to turn on Audicity via the global configuration.
 
 1. Click the App Launcher waffle icon.
 2. Click **View All**.
@@ -262,13 +276,13 @@ Let’s get Audicity turned on via Audicity’s global configuration.
 7. Click **Save**.
 8. It can take a moment for tracking to be enabled (as well as other configurations). The configuration UI will show a warning icon until changes have been deployed successfully.
 
-Audicity is now enabled. Time to setup an object to track.
+Audicity is now enabled. Next you'll setup tracking on the first object.
 
-**Note**: No changes are committed to the Audicity configuration unless explicitly saved. Be certain to commit any changes by clicking **Save** before leaving the Audicity Configuration tab.
+> _**Note**: No changes are committed to the Audicity configuration unless explicitly saved. Be certain to commit any changes by clicking **Save** before leaving the Audicity Configuration tab._
 
 ### Enable the First Traced Object
 
-To pilot Audicity the Dreamhouse Team will first roll out tracking on the Property Object. Let’s jump right in.
+To try out Audicity the Dreamhouse team will first roll out tracking on the Property Object.
 
 1. You should already be in the **Audicity Configuration** tab. But if not, use the App Launcher to go to the **Audicity** app, and click **Audicity Configuration**.
 2. The **Object Configuration** list should be empty. Click **Add Object**.
@@ -288,7 +302,7 @@ To pilot Audicity the Dreamhouse Team will first roll out tracking on the Proper
     - Status
 9. Click **Confirm**.
 10. The **Object Configuration** list should now show there are 8 tracked fields.
-11. Click **Save**.
+11. Click **Save** and wait a moment for the async update to complete.
 
 Audicity now knows that you want to track an object and which fields to track. But there’s some work to do in order to send the right data to Audicity. This is called _instrumentation_, which is next.
 
@@ -299,46 +313,47 @@ Telling Audicity which fields to track is the first step. Audicity also requires
 1. Open the `dreamhouse-audicity` project in Visual Studio Code.
 2. Open the `PropertyTrigger` trigger file. You should see the following.
 
-```java
+```apex
 trigger PropertyTrigger on Property__c(
-   before insert,
-   before update,
-   before delete,
-   after insert,
-   after update,
-   after delete,
-   after undelete
+    before insert,
+    before update,
+    before delete,
+    after insert,
+    after update,
+    after delete,
+    after undelete
 ) {
-   // ***** Add your Audicity instrumentation code on the line immediately following this comment ******
+    // ***** Add your Audicity instrumentation code on the line immediately following this comment ******
 
-   // ***** Add your Audicity instrumentation code on the line immediately before this comment ******
+    // ***** Add your Audicity instrumentation code on the line immediately before this comment ******
 
-   PropertyTriggerHandler.handleTrigger(
-       Trigger.new,
-       Trigger.newMap,
-       Trigger.oldMap,
-       Trigger.operationType
-   );
+    PropertyTriggerHandler.handleTrigger(
+        Trigger.new,
+        Trigger.newMap,
+        Trigger.oldMap,
+        Trigger.operationType
+    );
 
-   // ***** Add your Audicity instrumentation code on the line immediately following this comment ******
+    // ***** Add your Audicity instrumentation code on the line immediately following this comment ******
 
-   // ***** Add your Audicity instrumentation code on the line immediately before this comment ******
+    // ***** Add your Audicity instrumentation code on the line immediately before this comment ******
+
 }
 ```
 
 3. In between the first set of comments `PropertyTriggerHandler.handleTrigger()` add the following code:
 
-```java
+```apex
    if (Trigger.isBefore){
-       *mantra*.*AudicityApex*.track()**;**
+       mantra.AudicityApex.track();
    }
 ```
 
 4. In between the second set of comments add the following code block:
 
-```java
+```apex
    if (Trigger.isAfter){
-       *mantra*.*AudicityApex*.track()**;**
+       mantra.AudicityApex.track();
    }
 ```
 
@@ -346,20 +361,20 @@ trigger PropertyTrigger on Property__c(
 6. From the menu bar select **File > Save**.
 7. Right-click anywhere in the body of the trigger file and select **SFDX: Deploy This Source to Org** from the context menu.
 
-We’re nearly there. With a quick adjustment to the UI of your object, you’ll now be able to track and view the changes you want to see.
+Tracking is now enabled. You’re nearly there. With a quick adjustment to the UI of your object, you’ll be able to view the tracked data.
 
 ### Viewing Audicity Tracking in the UI
 
-Audicity comes with a web component which you can use to view the changes that Audicity tracks. It’s called the **Audit Trails** component. We’re going to add that to the Property record page using Lightning App Builder.
+Audicity includes a web component which you can use to view the changes that Audicity tracks. It’s called the **Audit Trails** component. We’re going to add that to the Property record page using Lightning App Builder.
 
 1. Click the App Launcher waffle icon.
 2. Click **View All**.
 3. Select **Dreamhouse**.
 4. Select the **Properties** tab.
 5. Select one of the property records from the list.
-6. Click the gear icon at the top of the page and select **Edit Page**.
+6. Click the gear icon at the top of the page and select **Edit Page** to open Lightning App Builder.
 7. On the App Builder canvas in the middle, select the **Related** tab.
-8. The component palette at the left contains all available components for this page. At the bottom is a set called **Custom Managed**. You should see the **Audit Trails** component there.
+8. The component palette at the left contains all available components for this page. At the bottom is a grouping called **Custom Managed**. You should see the **Audit Trails** component there.
 9. Drag **Audit Trails** onto the page just below the **Campaigns** related list.
 10. Click **Save**.
 11. Click the left arrow at the upper left of the App Builder toolbar to go back to the Property record page.
@@ -391,6 +406,7 @@ Let’s see the tracking on the Property object.
 
 As you know, there is a trigger for Property which creates and keeps the Campaign record in sync. With a little more instrumentation and a small change to the Campaign UI, we can get a much richer picture of these Property save transactions.
 
+<!--
 ## Optional Reading on Audicity Architecture, Tracing, Spans, ASEs, etc.
 
 Section on About ASE’s and a bit about observability and how a “span” correlates to a transaction.
@@ -398,6 +414,7 @@ Section on About ASE’s and a bit about observability and how a “span” corr
 [Note: just had a thought how I could introduce a potential race condition where the trigger attempted to auto-update the “Listed” flag on Property…must investigate.]
 
 [would like section in here explaining how Audicity works at a high level. Confining it to its own section means we could cue the learner to skip and come back if they wanted to. Alternatively, we could have a white paper or article that describes this that we summarize here and point them to.]
+-->
 
 ## Expanding the Audicity Tracking Footprint
 
@@ -407,9 +424,11 @@ With the Property record tracking in place, we now want to get a more full pictu
 -   Instrument the trigger
 -   Setup the record page
 
+Since the update logic is implemented using asynchronous Apex, there will be an additional step to ensure that logic is instrumented.
+
 ### Track the Campaign Object
 
-Let’s jump right in and setup everything for the Campaign object
+Once again you'll configure and instrument the object to track. In this instance, Campaign.
 
 1. In the App Launcher to go to the **Audicity** app.
 2. Click **Audicity Configuration**.
@@ -423,7 +442,7 @@ Let’s jump right in and setup everything for the Campaign object
 10. Click **Confirm**.
 11. The **Object Configuration** list should now show _All Fields_ as tracked.
 12. Click **Save**.
-13. Once again, open (or return to) the dreamhouse-audicity project in VS Code.
+13. Once again, open (or return to) the `dreamhouse-audicity` project in VS Code.
 14. Open the command palette by typing
     - In Windows: **CTRL-SHIFT-P**
     - In Mac: **COMMAND-SHIFT-P**
@@ -451,19 +470,19 @@ trigger CampaignTrigger on Campaign (
 21. **Save**.
 22. Right-click in the body of your trigger code and select **SFDX: Deploy This Source to Org**.
 
-    **Note**: Why is there one `track()` call in this trigger, while there were two in the previous example?
+    > _**Note**: Why is there one `track()` call in this trigger, while there were two in the previous example?_
+    >
+    > _Audicity expects an instrumentation call as close to the start of the transaction as possible. Likewise, another is expected to be as close to the end of the transaction as possible. In a trigger with no other logic, a single invocation ensures that on any operation (insert, update, etc.) there will be a `track()` call in each phase (before, after) of the transaction. When there is other logic invoked by a trigger, the `track()` call must be placed on either side of the start and end points of the execution of other logic. You can find more details on this in the Audicity User [Guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit#heading=h.iw54etup6gvm)._
 
-    Audicity expects an instrumentation call as close to the start of the transaction as possible. Likewise, another is expected to be as close to the end of the transaction as possible. In a trigger with no other logic, a single invocation ensures that on any operation (insert, update, etc.) there will be a `track()` call in each phase (before, after) of the transaction. When there is other logic invoked by a trigger, the `track()` call must be placed on either side of the start and end points of the execution of other logic. You can find more details on this in the Audicity User [Guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit#heading=h.iw54etup6gvm).
+Everything is in place to track Campaign changes. But the Dreamhosue team also want more visibility into the asynchronous Apex calls that form the Campaign update logic. That's next.
 
-We’re all set to track Campaign changes. But we also want more visibility into the asynchronous Apex calls that are in our org. We’ll set that up next.
+### Trace Asynchronous Apex
 
-### Connect Your Transaction to Asynchronous Apex
-
-It’s important to not overload a single transaction. Asynchronous Apex is a useful tool to decouple some work that can run in its own runtime context. But doing so also creates challenges when tracking data changes. Audicity traces can show how other features are invoked within the transaction, including asynchronous Apex.
+As a general rule in Apex development, it’s important to not overload a single transaction. Asynchronous Apex is a useful tool to decouple some work to run in its own runtime context. But doing so also creates challenges when tracking data changes. Audicity traces can show how other features are invoked within the transaction, including asynchronous Apex.
 
 Instrumenting asynchronous Apex is done in two places. First, when you invoke your asynchronous Apex and then, within the asynchronous Apex class itself.
 
-**Note**: As of the publishing of this tutorial, the only asynchronous Apex that is supported is Queueable. Other types are on the roadmap.
+> _**Note**: As of the publishing of this tutorial, the only asynchronous Apex that is supported is `Queueable`. Other types are on the roadmap._
 
 1. Once again return to the project in VS Code.
 2. Go to the `PropertyCampaignPriceUpdateQueueable.cls` Apex class.
@@ -516,7 +535,7 @@ The `PropertyTriggerHandler` is responsible for invoking these Queueable classes
 
 The complete PropertyTriggerHandler [code](https://github.com/processity/dreamhouse-audicity/blob/complete-tutorial/force-app/main/default/classes/PropertyTriggerHandler.cls) is also available on GitHub.
 
-Let’s get these changes to your org.
+Commit these changes to your org.
 
 1. Open the command palette with
     - In Windows: **CTRL-SHIFT-P**
@@ -556,11 +575,13 @@ And with that, we’re ready! Let’s go make a change to one of our properties 
 8. Select the **Related** tab.
 9. Note a trace with a timestamp for when you last saved.
 10. Click that trace.
-11. Note the transaction now has a lot more detail.
+11. Notice the additional details captured about the transaction.
 
 Recall we defined a trace as all of the work performed by a transaction. Notice here the different branches that have been captured in this one trace.
 
 As you click around and look at the transaction, you will find that the invocation of the queueable classes is clearly identified. If you search further into the tree, you will also find where updates took place in the campaign record related to this property record.
+
+You could also go to the Campaign record which was modified and see its own trace history.
 
 ## Summary
 
