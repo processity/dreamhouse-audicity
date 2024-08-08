@@ -452,17 +452,17 @@ Once again you'll configure and instrument the object to track. In this instance
 18. **Enter** to accept the default file path.
 19. You should now have an empty Trigger code block in your new file. Copy and replace the entire code with the following:
 
-```java
-trigger CampaignTrigger on Campaign (
-   before insert,
-   before update,
-   before delete,
-   after insert,
-   after update,
-   after delete,
-   after undelete
+```apex
+trigger CampaignTrigger on Campaign(
+    before insert,
+    before update,
+    before delete,
+    after insert,
+    after update,
+    after delete,
+    after undelete
 ) {
-   mantra.AudicityApex.track();
+    mantra.AudicityApex.track();
 }
 ```
 
@@ -492,7 +492,7 @@ Instrumenting asynchronous Apex is done in two places. First, when you invoke yo
 6. Repeat steps 2-5 with the `PropertyCampaignStatusUpdateQueueable.cls` Apex class.
 7. Once complete, the first four lines of each of the execute method should look like this:
 
-```java
+```apex
    public void execute(QueueableContext context) {
        // ***** Add your Audicity instrumentation code on the line immediately following this comment ******
        mantra.AudicityAsync.track(context);
@@ -510,7 +510,7 @@ The `PropertyTriggerHandler` is responsible for invoking these Queueable classes
 5. **Save** the file.
 6. Once complete the two if statements should look like this:
 
-```java
+```apex
        if (propsUpdateStatus?.size() > 0) {
            PropertyCampaignStatusUpdateQueueable asyncStatus = new PropertyCampaignStatusUpdateQueueable(
                propsUpdateStatus
