@@ -235,7 +235,7 @@ Run the following command from the project in your terminal, or follow the UI in
 
 #### UI Permission Set Group Assignment Instructions
 
-1. Click the ![gear](https://github.com/user-attachments/assets/e1293379-6496-4a4e-a7cb-be7438e7593a) icon and select **Setup**.
+1. Click the ![gear](https://github.com/user-attachments/assets/8d1d3890-ee30-449b-8682-e00b10f9f351) icon and select **Setup**.
 2. Type _user_ in the **Quick Find** search field.
 3. Select **Users**.
 4. Find and click on your user record. If you’re using a scratch org, this is often named _User, User_.
