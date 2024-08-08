@@ -5,7 +5,7 @@
 -->
 
 ![dreamhouse-logo](dreamhouse-logo.png)
-This is a fork of the Dreamhouse [sample application](https://github.com/trailheadapps/dreamhouse-lwc) created by Salesforce developer relations team. This fork has been customized for the purpose of the Audicity setup and configuration [tutorial]() where you can practice installing and running the Audicity data and transaction tracking app.
+This is a fork of the Dreamhouse [sample application](https://github.com/trailheadapps/dreamhouse-lwc) created by Salesforce developer relations team. This fork has been customized for the purpose of the Audicity setup and configuration [tutorial](https://github.com/processity/dreamhouse-audicity/blob/main/TUTORIAL.md) where you can practice installing and running the Audicity data and transaction tracking app.
 
 Audicity and this project run in the Salesforce platform. In order to run it, and work with Audicity, you need a working Salesforce environment (also known as an "org" if you're new to working with Salesforce). Some steps below make use of Salesforce's expansive resources to get up and running with an environment. We are not Salesforce and cannot control Salesforce's enablement resources. If they change, and no longer work, please file an [issue](https://github.com/processity/dreamhouse-audicity/issues) in this repo and let us know. We'll work as quickly as we can to provide an alternative resource.
 
