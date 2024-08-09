@@ -126,15 +126,17 @@ Let’s go find and try out the Dreamhouse app.
 
 1. Click the App Launcher waffle icon.
 
-![the app launcher waffle icon as viewed from the setup menu](https://github.com/user-attachments/assets/7f7e04a9-08c8-4a9d-a68d-0cdc6de3b722)
+<img src="https://github.com/user-attachments/assets/7f7e04a9-08c8-4a9d-a68d-0cdc6de3b722" alt="the app launcher waffle icon as viewed from the setup menu" width="210" height="97"></img>
 
 2. Click **View All**.
 
-![the app launcher menu with the view all link circled with a red line](https://github.com/user-attachments/assets/4aee97e6-1acd-449b-b3ad-754c2290468c)
+<img src="https://github.com/user-attachments/assets/4aee97e6-1acd-449b-b3ad-754c2290468c" alt="the app launcher menu with the view all link circled with a red line" width="338" height="443"></img>
 
 3. Select **Dreamhouse**.
 
-![the app launcher popup window with all of the app tiles visible and the Dreamhouse tile circled with a red line](https://github.com/user-attachments/assets/f18dfc18-9135-4d75-a2a4-0a3e61762fe3)
+<!-- <img src="https://github.com/user-attachments/assets/f18dfc18-9135-4d75-a2a4-0a3e61762fe3" alt="the app launcher popup window with all of the app tiles visible and the Dreamhouse tile circled with a red line" width="1433" height="588"></img> -->
+
+<img src="https://github.com/user-attachments/assets/f18dfc18-9135-4d75-a2a4-0a3e61762fe3" alt="the app launcher popup window with all of the app tiles visible and the Dreamhouse tile circled with a red line" width="1075" height="441"></img>
 
 4. Click the **Properties** tab.
 
