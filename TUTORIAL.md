@@ -118,7 +118,7 @@ Let’s get started. If you just setup the org you created for this tutorial, yo
 
 If not, you’ll need to login to your org again. You can do this using the Salesforce CLI command `sf org open` from your project directory. If you have a developer edition org, you can also go to [https://login.salesforce.com](https://login.salesforce.com) and use your username and password.
 
-[this needs an image]
+![entering SF org open from the command line and displaying the response message](https://github.com/user-attachments/assets/04f8e649-faf5-4a82-95e9-2fd17f24e952)
 
 This will take you to your org. Typically you’ll find yourself in the setup menu. Although you might be in another location.
 
@@ -126,10 +126,16 @@ Let’s go find and try out the Dreamhouse app.
 
 1. Click the App Launcher waffle icon.
 
-[add image]
+![the app launcher waffle icon as viewed from the setup menu](https://github.com/user-attachments/assets/7f7e04a9-08c8-4a9d-a68d-0cdc6de3b722)
 
 2. Click **View All**.
+
+![the app launcher menu with the view all link circled with a red line](https://github.com/user-attachments/assets/4aee97e6-1acd-449b-b3ad-754c2290468c)
+
 3. Select **Dreamhouse**.
+
+![the app launcher popup window with all of the app tiles visible and the Dreamhouse tile circled with a red line](https://github.com/user-attachments/assets/f18dfc18-9135-4d75-a2a4-0a3e61762fe3)
+
 4. Click the **Properties** tab.
 
 You’ll now see a list of property records. Let’s create a new one.
@@ -290,7 +296,7 @@ To try out Audicity the Dreamhouse team will first roll out tracking on the Prop
 4. Click **+** on the row of the _Property_ object.
 5. Click **Confirm**.
 6. The **Object Configuration** list should now show the _Property_ object with a status of _Active_.
-7. On the _Property_ object row, click the pen icon to edit the configuration.
+7. On the _Property_ object row, click the ![pen icon](https://github.com/user-attachments/assets/42e65e98-380c-4476-b4f8-283a86c2b910) to edit the configuration.
 8. Enable the following fields by clicking the **+** next to each row.
     - Asking Price
     - Broker
@@ -367,17 +373,17 @@ Tracking is now enabled. You’re nearly there. With a quick adjustment to the U
 
 Audicity includes a web component which you can use to view the changes that Audicity tracks. It’s called the **Audit Trails** component. We’re going to add that to the Property record page using Lightning App Builder.
 
-1. Click the App Launcher waffle icon.
+1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1).
 2. Click **View All**.
 3. Select **Dreamhouse**.
 4. Select the **Properties** tab.
 5. Select one of the property records from the list.
-6. Click the gear icon at the top of the page and select **Edit Page** to open Lightning App Builder.
+6. Click the &nbsp;![gear](https://github.com/user-attachments/assets/0226307b-ed55-46f8-95d8-6f32f0045459)&nbsp; icon at the top of the page and select **Edit Page** to open Lightning App Builder.
 7. On the App Builder canvas in the middle, select the **Related** tab.
 8. The component palette at the left contains all available components for this page. At the bottom is a grouping called **Custom Managed**. You should see the **Audit Trails** component there.
 9. Drag **Audit Trails** onto the page just below the **Campaigns** related list.
 10. Click **Save**.
-11. Click the left arrow at the upper left of the App Builder toolbar to go back to the Property record page.
+11. Click the &nbsp;![left arrow](https://github.com/user-attachments/assets/a2d9d336-39b8-4ab0-964e-b658008fea73)&nbsp; at the upper left of the App Builder toolbar to go back to the Property record page.
 12. Click the **Related** tab to verify the **Audit Trails** list is now visible.
 
 Everything is now in place. You should now be able to track and view changes to the Property record.
