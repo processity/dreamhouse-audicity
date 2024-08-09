@@ -295,8 +295,8 @@ Time to turn on Audicity via the global configuration.
 6. Under **Global Configuration**, set **Tracking Status** to _Active_.
 7. Click **Save**.
 
-<span style="vertical-align: middle;"><img alt="tracking status toggle inactive" src="https://github.com/user-attachments/assets/d8e6227b-8030-4f8f-942c-eb1ffd691ac4"></img></span>
-&nbsp;&nbsp;<span style="vertical-align: middle;"><img alt="greater than sign indicating next step in a process" src="https://github.com/user-attachments/assets/e15b418e-f294-400d-9f18-e4e7f0c0df46" style="vertical-align: middle;" height="34" width="35"></img><span style="vertical-align: middle;">&nbsp;&nbsp;
+<img alt="tracking status toggle inactive" src="https://github.com/user-attachments/assets/d8e6227b-8030-4f8f-942c-eb1ffd691ac4" style="vertical-align: middle;"></img>
+&nbsp;&nbsp;<img alt="greater than sign indicating next step in a process" src="https://github.com/user-attachments/assets/e15b418e-f294-400d-9f18-e4e7f0c0df46" style="vertical-align: middle;" height="34" width="35"></img>&nbsp;&nbsp;
 <img alt="tracking status toggle clicked active but not saved" src="https://github.com/user-attachments/assets/7d28b75d-619c-4c2c-a99b-72c59ffad2f4" style="vertical-align: middle;">
 &nbsp;&nbsp;<img alt="greater than sign indicating next step in a process" src="https://github.com/user-attachments/assets/e15b418e-f294-400d-9f18-e4e7f0c0df46" style="vertical-align: middle;" height="34" width="35"></img>&nbsp;&nbsp;
 <img alt="save button" src="https://github.com/user-attachments/assets/6873e435-3e80-4762-8390-527ebaaeec74" style="vertical-align: middle;">
