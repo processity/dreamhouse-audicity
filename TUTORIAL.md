@@ -118,18 +118,24 @@ Let’s get started. If you just setup the org you created for this tutorial, yo
 
 If not, you’ll need to login to your org again. You can do this using the Salesforce CLI command `sf org open` from your project directory. If you have a developer edition org, you can also go to [https://login.salesforce.com](https://login.salesforce.com) and use your username and password.
 
-[this needs an image]
+![entering SF org open from the command line and displaying the response message](https://github.com/user-attachments/assets/04f8e649-faf5-4a82-95e9-2fd17f24e952)
 
 This will take you to your org. Typically you’ll find yourself in the setup menu. Although you might be in another location.
 
 Let’s go find and try out the Dreamhouse app.
 
-1. Click the App Launcher waffle icon.
+1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1).
 
-[add image]
+<img src="https://github.com/user-attachments/assets/7f7e04a9-08c8-4a9d-a68d-0cdc6de3b722" alt="the app launcher waffle icon as viewed from the setup menu" width="210" height="97" ></img>
 
 2. Click **View All**.
+
+<img src="https://github.com/user-attachments/assets/4aee97e6-1acd-449b-b3ad-754c2290468c" alt="the app launcher menu with the view all link circled with a red line" width="338" height="443"></img>
+
 3. Select **Dreamhouse**.
+
+<img src="https://github.com/user-attachments/assets/f18dfc18-9135-4d75-a2a4-0a3e61762fe3" alt="the app launcher popup window with all of the app tiles visible and the Dreamhouse tile circled with a red line" width="1075" height="441"></img>
+
 4. Click the **Properties** tab.
 
 You’ll now see a list of property records. Let’s create a new one.
@@ -153,6 +159,9 @@ Along with the property record, a campaign was automatically created with a trig
 The new campaign record is derived from the property data. This includes the name, which is derived from the property name, and the **Expected Revenue in Campaign** field, which reflects the property’s asking price. The trigger also keeps things in sync as the property changes. Let’s go see:
 
 1. Looking at the campaign record go to the **Property** field and click on the value _Mid-Century Modern_.
+
+<img alt="the property field with the value mid-century modern" src="https://github.com/user-attachments/assets/c26d6d5d-f415-40bf-b09e-23e1e7adbba9"  width="451" height="57"></img>
+
 2. Once back on the property page, change the following values
     - **Status**: _Available_
     - **Asking Price**: _825000_
@@ -185,7 +194,12 @@ You can install the Audicity package into your project org by going to the termi
 > sf package install --package Audicity --wait 5
 ```
 
-It could take a couple of minutes for the install to complete. While you wait, you can read the [next section](#audicitywhy-even) which goes into more depth about Audicity’s two key benefits: field history tracking and transaction tracing.
+It could take a couple of minutes for the install to complete, which will show the message below once successful. While you wait, you can read the [next section](#audicitywhy-even) which goes into more depth about Audicity’s two key benefits: field history tracking and transaction tracing.
+
+```bash
+Waiting 5 minutes for package install to complete.... done
+Successfully installed package [Audicity]
+```
 
 > _**NOTE**: Audicity can also be installed directly from the AppExchange [listing](<[https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828](https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828)>). Audicity offers a free trial, but installation from AppExchange requires having a user with the `Manage Billing` user permission._
 
@@ -231,11 +245,17 @@ Run the following command from the project in your terminal, or follow the UI in
 
 ```bash
 > sf org assign permset --name AudicityLoggingAdministrator AudicityLogWriter
+=== Permsets Assigned
+
+ Username                      Permission Set Assignment
+ ───────────────────────────── ────────────────────────────
+ test-kist0stp1w36@example.com AudicityLoggingAdministrator
+ test-kist0stp1w36@example.com AudicityLogWriter
 ```
 
 #### UI Permission Set Group Assignment Instructions
 
-1. Click the gear icon and select **Setup**.
+1. Click the &nbsp;![gear](https://github.com/user-attachments/assets/0226307b-ed55-46f8-95d8-6f32f0045459)&nbsp; icon and select **Setup**.
 2. Type _user_ in the **Quick Find** search field.
 3. Select **Users**.
 4. Find and click on your user record. If you’re using a scratch org, this is often named _User, User_.
@@ -264,34 +284,51 @@ For Audicity to begin to track changes in your org, there are a few steps which 
 
 Time to turn on Audicity via the global configuration.
 
-1. Click the App Launcher waffle icon.
+1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1).
 2. Click **View All**.
 3. Select **Audicity**.
 4. Click the **Audicity Configuration** tab.
 5. When first visiting Audicity Configuration, you’ll see a banner asking you to enable the _Audicity Action Scheduler_. Click **Schedule**.
 
-![][image2]
+<img alt="Audicity action scheduler banner" src="https://github.com/user-attachments/assets/25b68e9b-83ce-4499-93b3-e678c71dc6f5"></img>
 
 6. Under **Global Configuration**, set **Tracking Status** to _Active_.
 7. Click **Save**.
-8. It can take a moment for tracking to be enabled (as well as other configurations). The configuration UI will show a warning icon until changes have been deployed successfully.
+
+<img alt="tracking status toggle inactive" src="https://github.com/user-attachments/assets/d8e6227b-8030-4f8f-942c-eb1ffd691ac4" style="vertical-align: middle;"></img>
+&nbsp;&nbsp;<img alt="greater than sign indicating next step in a process" src="https://github.com/user-attachments/assets/e15b418e-f294-400d-9f18-e4e7f0c0df46" style="vertical-align: middle;" height="34" width="35"></img>&nbsp;&nbsp;
+<img alt="tracking status toggle clicked active but not saved" src="https://github.com/user-attachments/assets/7d28b75d-619c-4c2c-a99b-72c59ffad2f4" style="vertical-align: middle;">
+&nbsp;&nbsp;<img alt="greater than sign indicating next step in a process" src="https://github.com/user-attachments/assets/e15b418e-f294-400d-9f18-e4e7f0c0df46" style="vertical-align: middle;" height="34" width="35"></img>&nbsp;&nbsp;
+<img alt="save button" src="https://github.com/user-attachments/assets/6873e435-3e80-4762-8390-527ebaaeec74" style="vertical-align: middle;">
+&nbsp;&nbsp;<img alt="greater than sign indicating next step in a process" src="https://github.com/user-attachments/assets/e15b418e-f294-400d-9f18-e4e7f0c0df46" style="vertical-align: middle;" height="34" width="35"></img>&nbsp;&nbsp;
+<img alt="tracking status toggle with save in progress" src="https://github.com/user-attachments/assets/19992abd-7644-4af2-b08b-36d340dd9371" style="vertical-align: middle;">
+&nbsp;&nbsp;<img alt="greater than sign indicating next step in a process" src="https://github.com/user-attachments/assets/e15b418e-f294-400d-9f18-e4e7f0c0df46" style="vertical-align: middle;" height="34" width="35"></img>&nbsp;&nbsp;
+<img alt="tracking status toggle active and saved" src="https://github.com/user-attachments/assets/0e666828-8c83-42ba-b4ef-bae88699a1a3" style="vertical-align: middle;">
+
+8. It can take a moment for tracking to be enabled.
 
 Audicity is now enabled. Next you'll setup tracking on the first object.
 
-> _**NOTE**: No changes are committed to the Audicity configuration unless explicitly saved. Be certain to commit any changes by clicking **Save** before leaving the Audicity Configuration tab._
+> _**NOTE**: No changes are committed to the Audicity configuration unless explicitly saved. Be certain to commit any changes by clicking **Save** before leaving the Audicity Configuration tab. Any configuration changes are enabled asynchronously. The UI displays a warning icon and is locked from change while the save is in progress._
+>
+> <img alt="user interface displaying the in-progress warning icon" src="https://github.com/user-attachments/assets/39d1c92c-db2d-45f2-a9b7-923afd04efd0" height="188" width="284"></img>
 
 ### Enable the First Traced Object
 
 To try out Audicity the Dreamhouse team will first roll out tracking on the Property Object.
 
-1. You should already be in the **Audicity Configuration** tab. But if not, use the App Launcher to go to the **Audicity** app, and click **Audicity Configuration**.
+1. You should already be in the **Audicity Configuration** tab. But if not, use the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1) to go to the **Audicity** app, and click **Audicity Configuration**.
 2. The **Object Configuration** list should be empty. Click **Add Object**.
+
+<img alt="the object configuration list with the add object button circled with a red line" src="https://github.com/user-attachments/assets/af78d676-a985-4328-9b49-4287e7574b2c" height="214" width="1000"></img>
+
 3. Find the _Property_ object in the list of objects.
 4. Click **+** on the row of the _Property_ object.
 5. Click **Confirm**.
-6. The **Object Configuration** list should now show the _Property_ object with a status of _Active_.
-7. On the _Property_ object row, click the pen icon to edit the configuration.
-8. Enable the following fields by clicking the **+** next to each row.
+6. Click **Save** and wait a moment for the async update to complete.
+7. The **Object Configuration** list should now show the _Property_ object with a status of _Active_.
+8. On the _Property_ object row, click the ![pen icon](https://github.com/user-attachments/assets/42e65e98-380c-4476-b4f8-283a86c2b910) to edit the configuration.
+9. Enable the following fields by clicking the **+** next to each row.
     - Asking Price
     - Broker
     - Date Agreement
@@ -300,9 +337,9 @@ To try out Audicity the Dreamhouse team will first roll out tracking on the Prop
     - Date Listed
     - Price Sold
     - Status
-9. Click **Confirm**.
-10. The **Object Configuration** list should now show there are 8 tracked fields.
-11. Click **Save** and wait a moment for the async update to complete.
+10. Click **Confirm**.
+11. The **Object Configuration** list should now show there are 8 tracked fields.
+12. Click **Save** and wait a moment for the async update to complete.
 
 Audicity now knows that you want to track an object and which fields to track. But there’s some work to do in order to send the right data to Audicity. This is called _instrumentation_, which is next.
 
@@ -367,18 +404,26 @@ Tracking is now enabled. You’re nearly there. With a quick adjustment to the U
 
 Audicity includes a web component which you can use to view the changes that Audicity tracks. It’s called the **Audit Trails** component. We’re going to add that to the Property record page using Lightning App Builder.
 
-1. Click the App Launcher waffle icon.
+1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1).
 2. Click **View All**.
 3. Select **Dreamhouse**.
 4. Select the **Properties** tab.
 5. Select one of the property records from the list.
-6. Click the gear icon at the top of the page and select **Edit Page** to open Lightning App Builder.
+6. Click the &nbsp;![gear](https://github.com/user-attachments/assets/0226307b-ed55-46f8-95d8-6f32f0045459)&nbsp; icon at the top of the page and select **Edit Page** to open Lightning App Builder.
 7. On the App Builder canvas in the middle, select the **Related** tab.
+
+<img alt="property detail page in Lightning App Builder with related tab selected" src="https://github.com/user-attachments/assets/0dbe77da-afa6-4f02-9b37-f3b3dd338591"></img>
+
 8. The component palette at the left contains all available components for this page. At the bottom is a grouping called **Custom Managed**. You should see the **Audit Trails** component there.
+
+<img alt="component palette side bar in Lightning App Builder" src="https://github.com/user-attachments/assets/a6f2ea6c-7359-4d53-9ab6-fac5d474adc3" width="292" height="497"></img>
+
 9. Drag **Audit Trails** onto the page just below the **Campaigns** related list.
 10. Click **Save**.
-11. Click the left arrow at the upper left of the App Builder toolbar to go back to the Property record page.
-12. Click the **Related** tab to verify the **Audit Trails** list is now visible.
+11. Click the &nbsp;![left arrow](https://github.com/user-attachments/assets/a2d9d336-39b8-4ab0-964e-b658008fea73)&nbsp; at the upper left of the App Builder toolbar to go back to the Property record page.
+12. Click the **Related** tab to verify the **Audit Trail** list is now visible.
+
+<img alt="Audit Trail related list displayed in the property record detail page" src="https://github.com/user-attachments/assets/27dbeb35-bd62-4a97-bf06-a599665e577d" width="1000" height="754"></img>
 
 Everything is now in place. You should now be able to track and view changes to the Property record.
 
@@ -402,11 +447,15 @@ Let’s see the tracking on the Property object.
 6. Click **Save**.
 7. Select the **Related** tab.
 8. In the **Audit Trail** related list you should now see two traces, one for record create and another for record update.
+
+<img alt="Audit Trail related list displayed in the property record detail page" src="https://github.com/user-attachments/assets/73c70e48-4d15-4982-abac-09cd39860ddb" width="1000" height="248"></img>
+
 9. Take a moment to click into each of these. Notice each contains the trace details, as well as the tree-like trace explorer. You’ll revisit this next with a more complex trace.
 
 As you know, there is a trigger for Property which creates and keeps the Campaign record in sync. With a little more instrumentation and a small change to the Campaign UI, we can get a much richer picture of these Property save transactions.
 
 <!--
+TODO: Complete this section with architecture details about Audicity
 ## Optional Reading on Audicity Architecture, Tracing, Spans, ASEs, etc.
 
 Section on About ASE’s and a bit about observability and how a “span” correlates to a transaction.
@@ -430,7 +479,7 @@ Since the update logic is implemented using asynchronous Apex, there will be an 
 
 Once again you'll configure and instrument the object to track. In this instance, Campaign.
 
-1. In the App Launcher to go to the **Audicity** app.
+1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1) to go to the **Audicity** app.
 2. Click **Audicity Configuration**.
 3. In **Object Configuration** click **Add Object**.
 4. Find the _Campaign_ object in the list of objects.
@@ -448,6 +497,9 @@ Once again you'll configure and instrument the object to track. In this instance
     - In Mac: **COMMAND-SHIFT-P**
 15. Type _Trigger_.
 16. Select **SFDX: Create Apex Trigger**.
+
+<img alt="SFDX new trigger command pallette action in VS code" src="https://github.com/user-attachments/assets/da8b2b4f-ea2c-4b06-bcc7-6663db7a998d"></img>
+
 17. Type _CampaignTrigger_.
 18. **Enter** to accept the default file path.
 19. You should now have an empty Trigger code block in your new file. Copy and replace the entire code with the following:
@@ -547,7 +599,7 @@ Commit these changes to your org.
 
 Once again, we need to update the UI to see changes to the campaign object.
 
-1. Click on App Launcher
+1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1)
 2. In the field **Search apps and items…** type _Campaign_.
 3. Select _Campaigns_.
 4. Select any campaign record.
@@ -565,7 +617,7 @@ Once again, we need to update the UI to see changes to the campaign object.
 
 And with that, we’re ready! Let’s go make a change to one of our properties and see how that looks compared to before.
 
-1. Click the App Launcher waffle icon.
+1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1).
 2. Click **View All**.
 3. Select **Dreamhouse**.
 4. Click the **Properties** tab.
@@ -574,8 +626,10 @@ And with that, we’re ready! Let’s go make a change to one of our properties 
 7. Click **Save**.
 8. Select the **Related** tab.
 9. Note a trace with a timestamp for when you last saved.
-10. Click that trace.
+10. Click that trace to open the Audicity trace explorer.
 11. Notice the additional details captured about the transaction.
+
+<img alt="Audicity trace explorer displaying a complex trace containing clearly marked queue-able transaction branches" src="https://github.com/user-attachments/assets/9073a05c-cdc9-48e7-b6ef-9a2e8dd25b10" width="1000" height="306"></img>
 
 Recall we defined a trace as all of the work performed by a transaction. Notice here the different branches that have been captured in this one trace.
 
