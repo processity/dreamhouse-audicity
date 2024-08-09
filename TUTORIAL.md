@@ -126,7 +126,7 @@ Let’s go find and try out the Dreamhouse app.
 
 1. Click the App Launcher waffle icon.
 
-<div style="filter: drop-shadow(2px 4px 6px gray);">
+<div style="box-shadow: 2px 4px 6px gray;">
     <img src="https://github.com/user-attachments/assets/7f7e04a9-08c8-4a9d-a68d-0cdc6de3b722" alt="the app launcher waffle icon as viewed from the setup menu" width="210" height="97" ></img>
 </div>
 
