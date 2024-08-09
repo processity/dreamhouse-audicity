@@ -295,7 +295,15 @@ Time to turn on Audicity via the global configuration.
 6. Under **Global Configuration**, set **Tracking Status** to _Active_.
 7. Click **Save**.
 
-<img alt="tracking status toggle inactive" src="https://github.com/user-attachments/assets/d8e6227b-8030-4f8f-942c-eb1ffd691ac4"></img>&nbsp;&nbsp;&nbsp;&nbsp;<img alt="tracking status toggle clicked active but not saved" src="https://github.com/user-attachments/assets/7d28b75d-619c-4c2c-a99b-72c59ffad2f4">&nbsp;&nbsp;&nbsp;&nbsp;<img alt="save button" src="https://github.com/user-attachments/assets/6873e435-3e80-4762-8390-527ebaaeec74">&nbsp;&nbsp;&nbsp;&nbsp;<img alt="tracking status toggle with save in progress" src="https://github.com/user-attachments/assets/19992abd-7644-4af2-b08b-36d340dd9371">&nbsp;&nbsp;&nbsp;&nbsp;<img alt="tracking status toggle active and saved" src="https://github.com/user-attachments/assets/0e666828-8c83-42ba-b4ef-bae88699a1a3">
+<img alt="tracking status toggle inactive" src="https://github.com/user-attachments/assets/d8e6227b-8030-4f8f-942c-eb1ffd691ac4" style="vertical-align: middle;"></img>
+&nbsp;&nbsp;<span style="font-size: 48px; vertical-align: middle;">&gt;</span>&nbsp;&nbsp;
+<img alt="tracking status toggle clicked active but not saved" src="https://github.com/user-attachments/assets/7d28b75d-619c-4c2c-a99b-72c59ffad2f4" style="vertical-align: middle;">
+&nbsp;&nbsp;<span style="font-size: 48px; vertical-align: middle;">&gt;</span>&nbsp;&nbsp;
+<img alt="save button" src="https://github.com/user-attachments/assets/6873e435-3e80-4762-8390-527ebaaeec74" style="vertical-align: middle;">
+&nbsp;&nbsp;<span style="font-size: 48px; vertical-align: middle;">&gt;</span>&nbsp;&nbsp;
+<img alt="tracking status toggle with save in progress" src="https://github.com/user-attachments/assets/19992abd-7644-4af2-b08b-36d340dd9371" style="vertical-align: middle;">
+&nbsp;&nbsp;<span style="font-size: 48px; vertical-align: middle;">&gt;</span>&nbsp;&nbsp;
+<img alt="tracking status toggle active and saved" src="https://github.com/user-attachments/assets/0e666828-8c83-42ba-b4ef-bae88699a1a3" style="vertical-align: middle;">
 
 8. It can take a moment for tracking to be enabled.
 
