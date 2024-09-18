@@ -14,7 +14,7 @@ Property                    Campaign
 
     private List<Property__c> properties = new List<Property__c>();
 
-    private static final Map<String, String> STATUS_MAP = new Map<String, String>{
+    public static final Map<String, String> STATUS_MAP = new Map<String, String>{
         'Contracted' => 'Planned',
         'Pre Market' => 'Planned',
         'Available' => 'In Progress',
@@ -22,7 +22,7 @@ Property                    Campaign
         'Closed' => 'Completed'
     };
 
-    private static final Map<String, Boolean> AVAILABLE_MAP = new Map<String, Boolean>{
+    public static final Map<String, Boolean> ACTIVE_MAP = new Map<String, Boolean>{
         'Contracted' => false,
         'Pre Market' => false,
         'Available' => true,
@@ -49,7 +49,7 @@ Property                    Campaign
         for (Campaign campgn : campaigns) {
             String propStatus = propMap.get(campgn.Property__c).Status__c;
             campgn.Status = STATUS_MAP.get(propStatus);
-            campgn.IsActive = AVAILABLE_MAP.get(propStatus);
+            campgn.IsActive = ACTIVE_MAP.get(propStatus);
         }
 
         Database.update(campaigns);
