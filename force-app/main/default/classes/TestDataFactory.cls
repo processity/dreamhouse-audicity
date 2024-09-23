@@ -1,8 +1,5 @@
 public with sharing class TestDataFactory {
     private static String DEFAULT_STATUS_VALUE = 'Contracted';
-    // public TestDataFactory() {
-
-    // }
 
     public static void createProperties(Integer amount) {
         createProperties(amount, DEFAULT_STATUS_VALUE);
