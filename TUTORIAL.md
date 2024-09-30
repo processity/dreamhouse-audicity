@@ -9,7 +9,7 @@ Audicity is a native Salesforce app that uses the principles of observability to
 -   Record field data changes for as many objects and fields as needed.
 -   Create end-to-end records of transactions (Audicity Span Events) that describe any actions that take place, or are invoked asynchronously by the transaction context.
 
-Salesforce already can track field data changes with straightforward configurations using either Field History or Field Audit Trail. But each of these comes with limits on the number of tracked fields. And Field History limits history storage to two years. With Audicity, no such limits apply. There is more that can be said about this and the section [Audicity–Why Even?](audicitywhy-even) goes into more detail about this later. But for now let’s get started with getting Audicity working.
+Salesforce already can track field data changes with straightforward configurations using either Field History or Field Audit Trail. But each of these comes with limits on the number of tracked fields. And Field History limits history storage to two years. With Audicity, no such limits apply. There is more that can be said about this and the section [Audicity–Why Even?](#audicitywhy-even) goes into more detail about this later. But for now let’s get started with getting Audicity working.
 
 In this tutorial, you will install, configure, and instrumentation code using Audicity's free trial. Once complete, you will have:
 
