@@ -1,15 +1,17 @@
-# Audicity Tutorial Dreamhouse Sample App
+# Processity Data History Tutorial Dreamhouse Sample App
 
 <!--
 [![CI Workflow](https://github.com/trailheadapps/dreamhouse-lwc/workflows/CI/badge.svg)](https://github.com/trailheadapps/dreamhouse-lwc/actions?query=workflow%3ACI) [![Packaging Workflow](https://github.com/trailheadapps/dreamhouse-lwc/workflows/Packaging/badge.svg)](https://github.com/trailheadapps/dreamhouse-lwc/actions?query=workflow%3APackaging) [![codecov](https://codecov.io/gh/trailheadapps/dreamhouse-lwc/branch/main/graph/badge.svg)](https://codecov.io/gh/trailheadapps/dreamhouse-lwc)
 -->
 
 ![dreamhouse-logo](dreamhouse-logo.png)
-This is a fork of the Dreamhouse [sample application](https://github.com/trailheadapps/dreamhouse-lwc) created by Salesforce developer relations team. This fork has been customized for the purpose of the Audicity setup and configuration [tutorial](https://github.com/processity/dreamhouse-audicity/blob/main/TUTORIAL.md) where you can practice installing and running the Audicity data and transaction tracking app.
+This is a fork of the Dreamhouse [sample application](https://github.com/trailheadapps/dreamhouse-lwc) created by Salesforce developer relations team. This fork has been customized for the purpose of the Processity Data History setup and configuration [tutorial](https://github.com/processity/dreamhouse-audicity/blob/main/TUTORIAL.md) where you can practice installing and running the Processity Data History data and transaction tracking app.
 
-Audicity and this project run in the Salesforce platform. In order to run it, and work with Audicity, you need a working Salesforce environment (also known as an "org" if you're new to working with Salesforce). Some steps below make use of Salesforce's expansive resources to get up and running with an environment. We are not Salesforce and cannot control Salesforce's enablement resources. If they change, and no longer work, please file an [issue](https://github.com/processity/dreamhouse-audicity/issues) in this repo and let us know. We'll work as quickly as we can to provide an alternative resource.
+Processity Data History and this project run in the Salesforce platform. In order to run it, and work with Processity Data History, you need a working Salesforce environment (also known as an "org" if you're new to working with Salesforce). Some steps below make use of Salesforce's expansive resources to get up and running with an environment. We are not Salesforce and cannot control Salesforce's enablement resources. If they change, and no longer work, please file an [issue](https://github.com/processity/dreamhouse-audicity/issues) in this repo and let us know. We'll work as quickly as we can to provide an alternative resource.
 
 ## Table of contents
+
+- [A Note on Naming](#a-note-on-naming)
 
 -   [Installing Dreamhouse Using a Scratch Org](#installing-dreamhouse-using-a-scratch-org): This is the recommended installation option. Use this option if you are a developer who wants to experience the app and the code.
 
@@ -20,6 +22,9 @@ Audicity and this project run in the Salesforce platform. In order to run it, an
 -   [Optional installation instructions](#optional-installation-instructions)
 
 -   [Notes and Additions for Audicity](#notes-and-additions-for-audicity)
+
+## A Note on Naming
+You might find references to Processity Data History’s old name, ‘Audicity’ in some parts of the application, where renaming would be disruptive to existing customers, or in areas that are impossible to rename due to the constraints of Salesforce managed packaging. If you’re in any doubt about an application artefact please don’t hesitate to contact us via ‘support@processity.ai’.
 
 ## Installing Dreamhouse using a Scratch Org
 
@@ -156,7 +161,7 @@ Properties inserted using the Salesforce CLI will appear as listed on TODAY() - 
 
 ## Optional Installation Instructions
 
-**None of these are necessary in order to run Audicity. These are kept in place here solely to honor the intent of the original creators of the Dreamhouse app.**
+**None of these are necessary in order to run Processity Data History. These are kept in place here solely to honor the intent of the original creators of the Dreamhouse app.**
 
 This repository contains several files that are relevant if you want to integrate modern web development tooling to your Salesforce development processes, or to your continuous integration/continuous deployment processes.
 
@@ -191,14 +196,14 @@ npm run prettier
 
 The app GeocodingService uses OpenStreetMap API to geocode property addresses. OpenStreetMap® is open data, licensed under the [Open Data Commons Open Database License (ODbL)](https://opendatacommons.org/licenses/odbl/) by the [OpenStreetMap Foundation (OSMF)](https://wiki.osmfoundation.org/wiki/Main_Page). You are free to copy, distribute, transmit and adapt OpenStreetMap data, as long as you credit OpenStreetMap and its contributors. If you alter or build upon our data, you may distribute the result only under the same licence. The [full legal code](https://opendatacommons.org/licenses/odbl/1-0/) explains your rights and responsibilities in regard to the service.
 
-## Notes and Additions for Audicity
+## Notes and Additions for Processity Data History
 
-(For the moment, this is more of a todo list for the project. Eventually this should become a list of the project artifacts and links that were added for Audicity.)
+(For the moment, this is more of a todo list for the project. Eventually this should become a list of the project artifacts and links that were added for Processity Data History.)
 
--   Installation instructions for Audicity package on AppExchange (generate org password and then login to org during appexchange install)
--   Assigning Audicity Permset
+-   Installation instructions for Processity Data History package on AppExchange (generate org password and then login to org during appexchange install)
+-   Assigning Processity Data History Permset
     `> sf org assign permset -n AudicityLoggingAdministrator`
--   turn on audicity tracking
+-   turn on Processity Data History tracking
 -   configure Property object and some fields for tracking
     -   make sure to save object settings even when changing fields
 -   add the Audit Trail LWC to the property record page with Lightning app builder
