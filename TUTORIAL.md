@@ -1,19 +1,22 @@
-# Install and Run Audicity in the Dreamhouse Audicity Sample Application
+# Install and Run Processity Data History in the Dreamhouse Processity Data History Sample Application
 
 _Tutorial (Duration 60 minutes)_
 
+## A Note on Naming
+You might find references to Processity Data History’s old name, ‘Audicity’, in some parts of the application and tutorial where renaming would be disruptive to existing customers, or in areas that are impossible to rename due to the constraints of Salesforce managed packaging. If you’re in any doubt about an application or tutorial artefact please don’t hesitate to contact us via ‘support@processity.ai’.
+
 ## Overview
 
-Audicity is a native Salesforce app that uses the principles of observability to:
+Processity Data History is a native Salesforce app that uses the principles of observability to:
 
 -   Record field data changes for as many objects and fields as needed.
--   Create end-to-end records of transactions (Audicity Span Events) that describe any actions that take place, or are invoked asynchronously by the transaction context.
+-   Create end-to-end records of transactions (Processity Data History Span Events) that describe any actions that take place, or are invoked asynchronously by the transaction context.
 
-Salesforce already can track field data changes with straightforward configurations using either Field History or Field Audit Trail. But each of these comes with limits on the number of tracked fields. And Field History limits history storage to two years. With Audicity, no such limits apply. There is more that can be said about this and the section [Audicity–Why Even?](#audicitywhy-even) goes into more detail about this later. But for now let’s get started with getting Audicity working.
+Salesforce already can track field data changes with straightforward configurations using either Field History or Field Audit Trail. But each of these comes with limits on the number of tracked fields. And Field History limits history storage to two years. With Processity Data History, no such limits apply. There is more that can be said about this and the section [Processity Data History–Why Even?](#processity-data-historywhy-even) goes into more detail about this later. But for now let’s get started with getting Processity Data History working.
 
-In this tutorial, you will install, configure, and instrument code using Audicity's free trial. Once complete, you will have:
+In this tutorial, you will install, configure, and instrument code using Processity Data History's free trial. Once complete, you will have:
 
--   Installed Audicity.
+-   Installed Processity Data History.
 -   Configured global settings for the org.
 -   Configured tracking for two objects.
 -   Captured and viewed a simple transaction.
@@ -23,9 +26,9 @@ In this tutorial, you will install, configure, and instrument code using Audicit
 
 -   [Getting Setup](#getting-setup)
 -   [Quick Tour of Key Dreamhouse Features](#quick-tour-of-key-dreamhouse-features)
--   [Installing Audicity and Setting Up Your First Trace](#installing-audicity-and-setting-up-your-first-trace)
-<!-- -   [Optional Reading on Audicity Architecture](#optional-reading-on-audicity-architecture) -->
--   [Expanding the Audicity Tracking Footprint](#expanding-the-audicity-tracking-footprint)
+-   [Installing Processity Data History and Setting Up Your First Trace](#installing-processity-data-history-and-setting-up-your-first-trace)
+<!-- -   [Optional Reading on Processity Data History Architecture](#optional-reading-on-processity-data-history-architecture) -->
+-   [Expanding the Processity Data History Tracking Footprint](#expanding-the-processity-data-history-tracking-footprint)
 
 ## Getting Setup
 
@@ -37,7 +40,7 @@ This tutorial has dependencies on the following:
 -   Visual Studio Code
 -   The Salesforce Extension pack for VS Code
 -   A non-production org to work with, typically a scratch org or a Developer edition org
--   The Audicity fork of the Dreamhouse sample application
+-   The Processity Data History fork of the Dreamhouse sample application
 
 Read on for a short description of each of these followed by guidance on where to find installation instructions for each. But if you are already familiar with developing on the Salesforce platform then feel free to [jump ahead](#installation-and-setup) into getting your org and the Dreamhouse sample application setup.
 
@@ -52,7 +55,7 @@ A Salesforce developer, or a very experience Salesforce administrator should be 
 
 ### Salesforce CLI
 
-The Salesforce CLI is the command line tool for interacting with Salesforce environments, also known as orgs. You will use this to deploy the Dreamhouse and Audicity apps to your org.
+The Salesforce CLI is the command line tool for interacting with Salesforce environments, also known as orgs. You will use this to deploy the Dreamhouse and Processity Data History apps to your org.
 
 ### Visual Studio Code
 
@@ -72,7 +75,7 @@ While this tutorial could work in any org, the Dreamhouse app is designed to be 
 
 ### The Dreamhouse Sample Application
 
-Dreamhouse is a sample application originated by the Salesforce developer relations team. The Audicity fork of the Dreamhouse app consists of a few additional features. It is called `dreamhouse-audicity`. These features provide additional context to someone learning how to install and configure Audicity as well as more interesting trace data than the standard Dreamhouse app might produce.
+Dreamhouse is a sample application originated by the Salesforce developer relations team. The Processity Data History fork of the Dreamhouse app consists of a few additional features. It is called `dreamhouse-audicity`. These features provide additional context to someone learning how to install and configure Processity Data History as well as more interesting trace data than the standard Dreamhouse app might produce.
 
 ### Installation and Setup
 
@@ -83,7 +86,7 @@ Dreamhouse is a sample application originated by the Salesforce developer relati
 <!--
 ### Important Steps for Scratch Orgs
 
-> _**Note:** Make sure to take note of the username of your Salesforce admin user. If you’re using a scratch org, you’ll need to generate a password to ease with the installation of the Audicity AppExchange package. An easy way to do both of these is using the Salesforce CLI from the dreamhouse-audicity directory._
+> _**Note:** Make sure to take note of the username of your Salesforce admin user. If you’re using a scratch org, you’ll need to generate a password to ease with the installation of the Processity Data History AppExchange package. An easy way to do both of these is using the Salesforce CLI from the dreamhouse-audicity directory._
 
 _To generate a password_
 
@@ -102,7 +105,7 @@ _To view org details including username and password_
 
 ### Dreamhouse and New Features
 
-Dreamhouse has a number of custom features that were designed to show developers how to build features on the Salesforce platform. These consist of the Property object to track houses for sale and the Broker object, which represent the members of the Sales team. In the `dreamhouse-audicity` app, we’ve added some new features to illustrate Audicity's data history and tracing capabilities. These include:
+Dreamhouse has a number of custom features that were designed to show developers how to build features on the Salesforce platform. These consist of the Property object to track houses for sale and the Broker object, which represent the members of the Sales team. In the `dreamhouse-audicity` app, we’ve added some new features to illustrate Processity Data History's data history and tracing capabilities. These include:
 
 -   A relationship field to the Property custom object in the Campaign object so that the property marketing team can run campaigns around properties that are being sold.
 -   A trigger on the Property record called `PropertyTrigger` which ensures every property record has a main campaign for its promotions.
@@ -172,38 +175,38 @@ The new campaign record is derived from the property data. This includes the nam
 
 The campaign record has been kept in sync with the changes in the property record.
 
-### Reviewing the Dreamhouse Audicity App Functionality
+### Reviewing the Dreamhouse Processity Data History App Functionality
 
 Seeing two records kept in sync with Apex code is not cutting edge stuff. It is the bread and butter of Salesforce projects. But what if you want more visibility to the history of how things have changed? What if you have compliance requirements? What if you’re experiencing unexplained side-effects for certain transactions?
 
-To answer these questions you might need to view historical field values, or even to be able to piece together a trace of what happened during transactions. This is where Audicity can help. Let’s get started and get Audicity installed.
+To answer these questions you might need to view historical field values, or even to be able to piece together a trace of what happened during transactions. This is where Processity Data History can help. Let’s get started and get Processity Data History installed.
 
-## Installing Audicity and Setting Up Your First Trace
+## Installing Processity Data History and Setting Up Your First Trace
 
-### Dreamhouse on Audicity
+### Dreamhouse on Processity Data History
 
-To comply with local fair housing regulation, the Dreamhouse org will be rolling out Audicity to ensure a full, complete, and permanent log of changes to important data in their org. They plan to roll this out initially to the Property object.
+To comply with local fair housing regulation, the Dreamhouse org will be rolling out Processity Data History to ensure a full, complete, and permanent log of changes to important data in their org. They plan to roll this out initially to the Property object.
 
-### Installing Audicity
+### Installing Processity Data History
 
 In this tutorial, you’ll install the package using the Salesforce CLI.
 
-You can install the Audicity package into your project org by going to the terminal in the project directory and entering
+You can install the Processity Data History package into your project org by going to the terminal in the project directory and entering
 
 ```bash
-> sf package install --package Audicity --wait 5
+> sf package install --package PDH --wait 5
 ```
 
-It could take a couple of minutes for the install to complete, which will show the message below once successful. While you wait, you can read the [next section](#audicitywhy-even) which goes into more depth about Audicity’s two key benefits: field history tracking and transaction tracing.
+It could take a couple of minutes for the install to complete, which will show the message below once successful. While you wait, you can read the [next section](#processity-data-historywhy-even) which goes into more depth about Processity Data History’s two key benefits: field history tracking and transaction tracing.
 
 ```bash
 Waiting 5 minutes for package install to complete.... done
-Successfully installed package [Audicity]
+Successfully installed package [Processity Data History]
 ```
 
-> _**NOTE**: Audicity can also be installed directly from the AppExchange [listing](<[https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828](https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828)>). Audicity offers a free trial, but installation from AppExchange requires having a user with the `Manage Billing` user permission._
+> _**NOTE**: Processity Data History can also be installed directly from the AppExchange [listing](<[https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828](https://appexchange.salesforce.com/appxListingDetail?listingId=8ecf5cc2-cc0d-4292-9d22-ff5a73568828)>). Processity Data History offers a free trial, but installation from AppExchange requires having a user with the `Manage Billing` user permission._
 
-### Audicity–Why Even?
+### Processity Data History–Why Even?
 
 #### Extensive Data Change Tracking
 
@@ -219,25 +222,25 @@ And what about trying to get to the bottom of transaction problems, such as slow
 
 An Apex logging is user specific, has to be turned on and only stays active for a limited time. This can help in many instances. But intermittent or unpredictable failures can be difficult to diagnose under these circumstances. And even if you get your timing right, failures may not be obvious to find in large log files which can sometimes be truncated if too long.
 
-The data that Audicity captures about all the work that is triggered by a transaction is called a _trace_. Once you’ve setup tracing, _all relevant_ transactions are traced. This makes it much more likely to capture data about a failure that happens intermittently.
+The data that Processity Data History captures about all the work that is triggered by a transaction is called a _trace_. Once you’ve setup tracing, _all relevant_ transactions are traced. This makes it much more likely to capture data about a failure that happens intermittently.
 
-To be clear: Audicity doesn’t trace all transactions. That might potentially be a lot\! Only the objects you’ve enabled will are traced. So there’s still no guarantee that you’ll capture that intermittent failure the first time when it takes place in the context of a non-traced object. But if you can pin down the failure to a particular object, you can then add tracing and you’ll be prepared for the next time a failure occurs.
+To be clear: Processity Data History doesn’t trace all transactions. That might potentially be a lot\! Only the objects you’ve enabled will are traced. So there’s still no guarantee that you’ll capture that intermittent failure the first time when it takes place in the context of a non-traced object. But if you can pin down the failure to a particular object, you can then add tracing and you’ll be prepared for the next time a failure occurs.
 
-### Configuring Access To Audicity
+### Configuring Access To Processity Data History
 
-Tracking changes in your org requires access to potentially sensitive data. For this reason, Audicity is architected to use your configured Salesforce object, field, and sharing security settings. To ensure this security remains intact, Audicity features and data should only ever be granted via the Audicity permission sets and accessed through the Audicity UI.
+Tracking changes in your org requires access to potentially sensitive data. For this reason, Processity Data History is architected to use your configured Salesforce object, field, and sharing security settings. To ensure this security remains intact, Processity Data History features and data should only ever be granted via the Processity Data History permission sets and accessed through the Processity Data History UI.
 
-Audicity is installed with a number of permission sets which are grouped into three user access levels using permission set groups. These are:
+Processity Data History is installed with a number of permission sets which are grouped into three user access levels using permission set groups. These are:
 
 | Label                           | API Name                     |
 | :------------------------------ | :--------------------------- |
-| Audicity Tracking Administrator | AudicityLoggingAdministrator |
-| Audicity Trace Viewer           | AudicityLoggingViewer        |
-| Audicity Trace Writer           | AudicityLogWriter            |
+| Processity Data History Tracking Administrator | AudicityLoggingAdministrator |
+| Processity Data History Trace Viewer           | AudicityLoggingViewer        |
+| Processity Data History Trace Writer           | AudicityLogWriter            |
 
-The Audicity [user guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit?usp=sharing) clearly outlines the permissions associated with each of these and when to use them. To complete this tutorial, you’ll need the _Audicity Tracking Administrator_ and _Audicity Trace Writer_ permission set groups.
+The Processity Data History [user guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit?usp=sharing) clearly outlines the permissions associated with each of these and when to use them. To complete this tutorial, you’ll need the _Processity Data History Tracking Administrator_ and _Processity Data History Trace Writer_ permission set groups.
 
-> _**NOTE:** To ensure you do not accidentally expose sensitive data to the wrong users, we recommend a fully reading and understanding these three Audicity permission set groups before moving Audicity into any org where users might access real customer data, including production or full and partial copy sandboxes._
+> _**NOTE:** To ensure you do not accidentally expose sensitive data to the wrong users, we recommend a fully reading and understanding these three Processity Data History permission set groups before moving Processity Data History into any org where users might access real customer data, including production or full and partial copy sandboxes._
 
 ### Assign Permission Set Groups
 
@@ -261,18 +264,18 @@ Run the following command from the project in your terminal, or follow the UI in
 4. Find and click on your user record. If you’re using a scratch org, this is often named _User, User_.
 5. Scroll down to find the **Permission Set Group Assignments** related list.
 6. Click **Edit Assignments**.
-7. Move _Audicity Tracking Administrator_ and _Audicity Trace Writer_ to the **Enabled Permission Set Groups** box.
+7. Move _Processity Data History Tracking Administrator_ and _Processity Data History Trace Writer_ to the **Enabled Permission Set Groups** box.
 8. Click **Save**.
-9. Verify _Audicity Tracking Administrator_ and _Audicity Trace Writer_ now show in the **Permission Set Group Assignments** related list.
+9. Verify _Processity Data History Tracking Administrator_ and _Processity Data History Trace Writer_ now show in the **Permission Set Group Assignments** related list.
 
-Congratulations\! You’ve successfully installed and given yourself access to Audicity. Time to get tracking\!
+Congratulations\! You’ve successfully installed and given yourself access to Processity Data History. Time to get tracking\!
 
-### Enable Audicity Tracking
+### Enable Processity Data History Tracking
 
-For Audicity to begin to track changes in your org, there are a few steps which need to be completed.
+For Processity Data History to begin to track changes in your org, there are a few steps which need to be completed.
 
--   Schedule Audicity Action Scheduler job.
--   Turn on Audicity.
+-   Schedule Processity Data History Action Scheduler job.
+-   Turn on Processity Data History.
 -   For each object you track:
     -   Enabling tracking for objects.
     -   Specifying tracked fields.
@@ -282,15 +285,15 @@ For Audicity to begin to track changes in your org, there are a few steps which 
     -   Instrumenting Flow.
     -   Instrumenting Asynchronous Apex.
 
-Time to turn on Audicity via the global configuration.
+Time to turn on Processity Data History via the global configuration.
 
 1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1).
 2. Click **View All**.
-3. Select **Audicity**.
-4. Click the **Audicity Configuration** tab.
-5. When first visiting Audicity Configuration, you’ll see a banner asking you to enable the _Audicity Action Scheduler_. Click **Schedule**.
+3. Select **Processity Data History**.
+4. Click the **Data History Configuration** tab.
+5. When first visiting Processity Data History Configuration, you’ll see a banner asking you to enable the _Processity Data History Action Scheduler_. Click **Schedule**.
 
-<img alt="Audicity action scheduler banner" src="https://github.com/user-attachments/assets/25b68e9b-83ce-4499-93b3-e678c71dc6f5"></img>
+<img alt="Processity Data History action scheduler banner" src="https://github.com/user-attachments/assets/25b68e9b-83ce-4499-93b3-e678c71dc6f5"></img>
 
 6. Under **Global Configuration**, set **Tracking Status** to _Active_.
 7. Click **Save**.
@@ -307,17 +310,17 @@ Time to turn on Audicity via the global configuration.
 
 8. It can take a moment for tracking to be enabled.
 
-Audicity is now enabled. Next you'll setup tracking on the first object.
+Processity Data History is now enabled. Next you'll setup tracking on the first object.
 
-> _**NOTE**: No changes are committed to the Audicity configuration unless explicitly saved. Be certain to commit any changes by clicking **Save** before leaving the Audicity Configuration tab. Any configuration changes are enabled asynchronously. The UI displays a warning icon and is locked from change while the save is in progress._
+> _**NOTE**: No changes are committed to the Processity Data History configuration unless explicitly saved. Be certain to commit any changes by clicking **Save** before leaving the Processity Data History Configuration tab. Any configuration changes are enabled asynchronously. The UI displays a warning icon and is locked from change while the save is in progress._
 >
 > <img alt="user interface displaying the in-progress warning icon" src="https://github.com/user-attachments/assets/39d1c92c-db2d-45f2-a9b7-923afd04efd0" height="188" width="284"></img>
 
 ### Enable the First Traced Object
 
-To try out Audicity the Dreamhouse team will first roll out tracking on the Property Object.
+To try out Processity Data History the Dreamhouse team will first roll out tracking on the Property Object.
 
-1. You should already be in the **Audicity Configuration** tab. But if not, use the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1) to go to the **Audicity** app, and click **Audicity Configuration**.
+1. You should already be in the **Processity Data History Configuration** tab. But if not, use the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1) to go to the **Processity Data History** app, and click **Data History Configuration**.
 2. The **Object Configuration** list should be empty. Click **Add Object**.
 
 <img alt="the object configuration list with the add object button circled with a red line" src="https://github.com/user-attachments/assets/af78d676-a985-4328-9b49-4287e7574b2c" height="214" width="1000"></img>
@@ -341,11 +344,11 @@ To try out Audicity the Dreamhouse team will first roll out tracking on the Prop
 11. The **Object Configuration** list should now show there are 8 tracked fields.
 12. Click **Save** and wait a moment for the async update to complete.
 
-Audicity now knows that you want to track an object and which fields to track. But there’s some work to do in order to send the right data to Audicity. This is called _instrumentation_, which is next.
+Processity Data History now knows that you want to track an object and which fields to track. But there’s some work to do in order to send the right data to Processity Data History. This is called _instrumentation_, which is next.
 
 ### Instrumenting Your Object
 
-Telling Audicity which fields to track is the first step. Audicity also requires some minor changes to your Apex code in order accurately trace the beginning and end of a transaction. This process is called instrumentation and is a common practice in the world of observability.
+Telling Processity Data History which fields to track is the first step. Processity Data History also requires some minor changes to your Apex code in order accurately trace the beginning and end of a transaction. This process is called instrumentation and is a common practice in the world of observability.
 
 1. Open the `dreamhouse-audicity` project in Visual Studio Code.
 2. Open the `PropertyTrigger` trigger file. You should see the following.
@@ -360,9 +363,9 @@ trigger PropertyTrigger on Property__c(
     after delete,
     after undelete
 ) {
-    // ***** Add your Audicity instrumentation code on the line immediately following this comment ******
+    // ***** Add your Processity Data History instrumentation code on the line immediately following this comment ******
 
-    // ***** Add your Audicity instrumentation code on the line immediately before this comment ******
+    // ***** Add your Processity Data History instrumentation code on the line immediately before this comment ******
 
     PropertyTriggerHandler.handleTrigger(
         Trigger.new,
@@ -371,9 +374,9 @@ trigger PropertyTrigger on Property__c(
         Trigger.operationType
     );
 
-    // ***** Add your Audicity instrumentation code on the line immediately following this comment ******
+    // ***** Add your Processity Data History instrumentation code on the line immediately following this comment ******
 
-    // ***** Add your Audicity instrumentation code on the line immediately before this comment ******
+    // ***** Add your Processity Data History instrumentation code on the line immediately before this comment ******
 
 }
 ```
@@ -400,9 +403,9 @@ trigger PropertyTrigger on Property__c(
 
 Tracking is now enabled. You’re nearly there. With a quick adjustment to the UI of your object, you’ll be able to view the tracked data.
 
-### Viewing Audicity Tracking in the UI
+### Viewing Processity Data History Tracking in the UI
 
-Audicity includes a web component which you can use to view the changes that Audicity tracks. It’s called the **Audit Trails** component. We’re going to add that to the Property record page using Lightning App Builder.
+Processity Data History includes a web component which you can use to view the changes that Processity Data History tracks. It’s called the **Audit Trails** component. We’re going to add that to the Property record page using Lightning App Builder.
 
 1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1).
 2. Click **View All**.
@@ -455,17 +458,17 @@ Let’s see the tracking on the Property object.
 As you know, there is a trigger for Property which creates and keeps the Campaign record in sync. With a little more instrumentation and a small change to the Campaign UI, we can get a much richer picture of these Property save transactions.
 
 <!--
-TODO: Complete this section with architecture details about Audicity
-## Optional Reading on Audicity Architecture, Tracing, Spans, ASEs, etc.
+TODO: Complete this section with architecture details about Processity Data History
+## Optional Reading on Processity Data History Architecture, Tracing, Spans, ASEs, etc.
 
 Section on About ASE’s and a bit about observability and how a “span” correlates to a transaction.
 
 [Note: just had a thought how I could introduce a potential race condition where the trigger attempted to auto-update the “Listed” flag on Property…must investigate.]
 
-[would like section in here explaining how Audicity works at a high level. Confining it to its own section means we could cue the learner to skip and come back if they wanted to. Alternatively, we could have a white paper or article that describes this that we summarize here and point them to.]
+[would like section in here explaining how Processity Data History works at a high level. Confining it to its own section means we could cue the learner to skip and come back if they wanted to. Alternatively, we could have a white paper or article that describes this that we summarize here and point them to.]
 -->
 
-## Expanding the Audicity Tracking Footprint
+## Expanding the Processity Data History Tracking Footprint
 
 With the Property record tracking in place, we now want to get a more full picture of everything that happens with the property record is created or updated. Since we know the Campaign record is being affected, we can start by doing the setup for that object. Remember the steps are:
 
@@ -479,8 +482,8 @@ Since the update logic is implemented using asynchronous Apex, there will be an 
 
 Once again you'll configure and instrument the object to track. In this instance, Campaign.
 
-1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1) to go to the **Audicity** app.
-2. Click **Audicity Configuration**.
+1. Click the App Launcher &nbsp;![waffle icon](https://github.com/user-attachments/assets/feb5ec4e-501f-4312-a2d3-bf86ab424de1) to go to the **Processity Data History** app.
+2. Click **Data History Configuration**.
 3. In **Object Configuration** click **Add Object**.
 4. Find the _Campaign_ object in the list of objects.
 5. Click **+** on the row of the _Campaign_ object.
@@ -524,13 +527,13 @@ trigger CampaignTrigger on Campaign(
 
     > _**NOTE**: Why is there one `track()` call in this trigger, while there were two in the previous example?_
     >
-    > _Audicity expects an instrumentation call as close to the start of the transaction as possible. Likewise, another is expected to be as close to the end of the transaction as possible. In a trigger with no other logic, a single invocation ensures that on any operation (insert, update, etc.) there will be a `track()` call in each phase (before, after) of the transaction. When there is other logic invoked by a trigger, the `track()` call must be placed on either side of the start and end points of the execution of other logic. You can find more details on this in the Audicity User [Guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit#heading=h.iw54etup6gvm)._
+    > _Processity Data History expects an instrumentation call as close to the start of the transaction as possible. Likewise, another is expected to be as close to the end of the transaction as possible. In a trigger with no other logic, a single invocation ensures that on any operation (insert, update, etc.) there will be a `track()` call in each phase (before, after) of the transaction. When there is other logic invoked by a trigger, the `track()` call must be placed on either side of the start and end points of the execution of other logic. You can find more details on this in the Processity Data History User [Guide](https://docs.google.com/document/d/1oviP0r2l768R28MgBa_DOK1DvFve1hO0GCgwF3ZiZ3o/edit#heading=h.iw54etup6gvm)._
 
 Everything is in place to track Campaign changes. But the Dreamhosue team also want more visibility into the asynchronous Apex calls that form the Campaign update logic. That's next.
 
 ### Trace Asynchronous Apex
 
-As a general rule in Apex development, it’s important to not overload a single transaction. Asynchronous Apex is a useful tool to decouple some work to run in its own runtime context. But doing so also creates challenges when tracking data changes. Audicity traces can show how other features are invoked within the transaction, including asynchronous Apex.
+As a general rule in Apex development, it’s important to not overload a single transaction. Asynchronous Apex is a useful tool to decouple some work to run in its own runtime context. But doing so also creates challenges when tracking data changes. Processity Data History traces can show how other features are invoked within the transaction, including asynchronous Apex.
 
 Instrumenting asynchronous Apex is done in two places. First, when you invoke your asynchronous Apex and then, within the asynchronous Apex class itself.
 
@@ -546,12 +549,12 @@ Instrumenting asynchronous Apex is done in two places. First, when you invoke yo
 
 ```apex
    public void execute(QueueableContext context) {
-       // ***** Add your Audicity instrumentation code on the line immediately following this comment ******
+       // ***** Add your Processity Data History instrumentation code on the line immediately following this comment ******
        mantra.AudicityAsync.track(context);
-       // ***** Add your Audicity instrumentation code on the line immediately before this comment ******
+       // ***** Add your Processity Data History instrumentation code on the line immediately before this comment ******
 ```
 
-If you would like to see the full completed code with the Audicity instrumentation, you can see it on github for the [PropertyCampaignPriceUpdateQueueable](https://github.com/processity/dreamhouse-audicity/blob/complete-tutorial/force-app/main/default/classes/PropertyCampaignPriceUpdateQueueable.cls) class or the [PropertyCampaignStatusUpdateQueueable](https://github.com/processity/dreamhouse-audicity/blob/complete-tutorial/force-app/main/default/classes/PropertyCampaignStatusUpdateQueueable.cls) class.
+If you would like to see the full completed code with the Processity Data History instrumentation, you can see it on github for the [PropertyCampaignPriceUpdateQueueable](https://github.com/processity/dreamhouse-audicity/blob/complete-tutorial/force-app/main/default/classes/PropertyCampaignPriceUpdateQueueable.cls) class or the [PropertyCampaignStatusUpdateQueueable](https://github.com/processity/dreamhouse-audicity/blob/complete-tutorial/force-app/main/default/classes/PropertyCampaignStatusUpdateQueueable.cls) class.
 
 The `PropertyTriggerHandler` is responsible for invoking these Queueable classes. You also need to instrument that code.
 
@@ -568,9 +571,9 @@ The `PropertyTriggerHandler` is responsible for invoking these Queueable classes
                propsUpdateStatus
            );
            Id jobId = System.enqueueJob(asyncStatus);
-           // ***** Add your Audicity instrumentation code on the line immediately following this comment *****
+           // ***** Add your Processity Data History instrumentation code on the line immediately following this comment *****
            mantra.AudicityAsync.track(jobId);
-           // ***** Add your Audicity instrumentation code on the line immediately before this comment *****
+           // ***** Add your Processity Data History instrumentation code on the line immediately before this comment *****
        }
 
 
@@ -579,9 +582,9 @@ The `PropertyTriggerHandler` is responsible for invoking these Queueable classes
                propsUpdatePrice
            );
            Id jobId = System.enqueueJob(asyncPrice);
-           // ***** Add your Audicity instrumentation code on the line immediately following this comment *****
+           // ***** Add your Processity Data History instrumentation code on the line immediately following this comment *****
            mantra.AudicityAsync.track(jobId);
-           // ***** Add your Audicity instrumentation code on the line immediately before this comment *****
+           // ***** Add your Processity Data History instrumentation code on the line immediately before this comment *****
        }
 ```
 
@@ -613,7 +616,7 @@ Once again, we need to update the UI to see changes to the campaign object.
 12. Click the left arrow at the left of the App Builder toolbar to return to the campaign record page.
 13. Note the Audit Trail component visible on the page.
 
-### Test Audicity Transaction Traces
+### Test Processity Data History Transaction Traces
 
 And with that, we’re ready! Let’s go make a change to one of our properties and see how that looks compared to before.
 
@@ -626,10 +629,10 @@ And with that, we’re ready! Let’s go make a change to one of our properties 
 7. Click **Save**.
 8. Select the **Related** tab.
 9. Note a trace with a timestamp for when you last saved.
-10. Click that trace to open the Audicity trace explorer.
+10. Click that trace to open the Processity Data History trace explorer.
 11. Notice the additional details captured about the transaction.
 
-<img alt="Audicity trace explorer displaying a complex trace containing clearly marked queue-able transaction branches" src="https://github.com/user-attachments/assets/9073a05c-cdc9-48e7-b6ef-9a2e8dd25b10" width="1000" height="306"></img>
+<img alt="Processity Data History trace explorer displaying a complex trace containing clearly marked queue-able transaction branches" src="https://github.com/user-attachments/assets/9073a05c-cdc9-48e7-b6ef-9a2e8dd25b10" width="1000" height="306"></img>
 
 Recall we defined a trace as all of the work performed by a transaction. Notice here the different branches that have been captured in this one trace.
 
@@ -641,13 +644,13 @@ You could also go to the Campaign record which was modified and see its own trac
 
 In this tutorial, you’ve:
 
--   Installed the Audicity app.
--   Configured Audicity for operation
--   Setup two objects to be tracked with Audicity, including
+-   Installed the Processity Data History app.
+-   Configured Processity Data History for operation
+-   Setup two objects to be tracked with Processity Data History, including
     -   Set the object configuration
     -   Set the field configurations
     -   Added Apex instrumentation for the object
     -   Modified the record page for the object to show tracked changes
 -   Instrumented some asynchronous Apex to be able to view how the transaction called the Queueable classes
 
-Audicity is unmatched in its completeness of data tracking in Salesforce orgs. But beyond that, it can also be a useful tool to understand why certain changes were made to potentially assist with troubleshooting difficult to solve production problems.
+Processity Data History is unmatched in its completeness of data tracking in Salesforce orgs. But beyond that, it can also be a useful tool to understand why certain changes were made to potentially assist with troubleshooting difficult to solve production problems.
